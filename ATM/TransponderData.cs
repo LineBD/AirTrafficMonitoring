@@ -30,6 +30,6 @@ namespace ATM
             {
                 Console.WriteLine(track);
             }
-        }
+        } 
     }
 }
