@@ -22,7 +22,7 @@ namespace ATM
             return track;
         }
 
-        private DateTime CreateDateTime()
+        private DateTime CreateDateTime(string _input)
         {
             string input = "yyyymmddhhmmssfff";
             string yearsub = input.Substring(0, 4);
@@ -35,8 +35,10 @@ namespace ATM
 
             Console.WriteLine("Year:{0}", yearsub + " Month:{1}", monthsub +" Date:{2}", datesub + " Hour:{3}",hoursub +" Minutes:{4}", minutesub + " Seconds:{5}", secondsub +" Milliseconds:{6}", millisecsub);
             // Hvordan kreere datetime objekt. skal returnere datetime objekt, kan være vi skal lave strengene om til integer
-            
-           
+            DateTime value = new DateTime(2018, 04, 05);
+            Console.WriteLine(value);
+            Console.WriteLine(value = DateTime.Today);
+            return value;
             
         }
 
