@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class TrackDTO
+    public class TrackDTO
     {
         public string Tag { get; set; }
         public int XCoordinate { get; set; }
 
         public int YCoordinate { get; set; }
         public int Altitude { get; set; }
-        public int Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
+
+
     }
 }
