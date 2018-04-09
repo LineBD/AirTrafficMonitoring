@@ -8,27 +8,27 @@ using NUnit.Framework.Internal;
 using TransponderReceiver;
 using NSubstitute;
 
-namespace ATM.Test.Unit
-{
-    [TestFixture()]
-    class DisplayTest
-    {
-        private Display _uut;
-        private ITransponderReceiver _fakeTransponderReceiver;
+//namespace ATM.Test.Unit
+//{
+//    [TestFixture()]
+//    class DisplayTest
+//    {
+//        private Display _uut;
+//        private ITransponderReceiver _fakeTransponderReceiver;
 
-        [SetUp]
-        public void SetUp()
-        {
+//        [SetUp]
+//        public void SetUp()
+//        {
             
-            _fakeTransponderReceiver = Substitute.For<ITransponderReceiver>();
-            _uut = new Display();
-        }
+//            _fakeTransponderReceiver = Substitute.For<ITransponderReceiver>();
+//            _uut = new Display();
+//        }
 
-        [Test]
-        public void TransponderDataRecived_CallCreateFlight_FlightIsCreated()
-        { 
+//        [Test]
+//        public void TransponderDataRecived_CallCreateFlight_FlightIsCreated()
+//        { 
 
-        }
+//        }
 
-    }
-}
+//    }
+//}
