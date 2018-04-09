@@ -24,7 +24,7 @@ namespace ATM
         }
 
         private DateTime _datetime;
-        private DateTime CreateDateTime(string input)
+        public DateTime CreateDateTime(string input)
         {
             int yearsub = Convert.ToInt32(input.Substring(0, 4));
             int monthsub = Convert.ToInt32(input.Substring(4, 6));
