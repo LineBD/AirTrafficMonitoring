@@ -11,28 +11,29 @@ namespace ATM
     {
         public void DisplayTrack()
         {
-                {
-                    var myReciever = TransponderReceiverFactory.CreateTransponderDataReceiver();
-                    myReciever.TransponderDataReady += MyReciever_TransponderDataReady;
-                    Console.ReadKey();
-                }
-            }
-            private static void MyReciever_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
             {
-
-                var tFactory = new TransponderDataFactory();
-
-                var mylist = e.TransponderData;
-
-                foreach (var track in mylist)
-                {
-
-                   tFactory.CreateFlight(track);
-                   Console.WriteLine(tFactory.ToString());
-
-                }
+                var myReciever = TransponderReceiverFactory.CreateTransponderDataReceiver();
+                myReciever.TransponderDataReady += MyReciever_transponderDataReady;
+                Console.ReadKey();
             }
         }
+
+        public static void MyReciever_transponderDataReady(object sender, RawTransponderDataEventArgs e)
+        {
+
+            var tFactory = new TransponderDataFactory();
+
+            var mylist = e.TransponderData;
+
+            foreach (var track in mylist)
+            {
+
+                tFactory.CreateFlight(track);
+                Console.WriteLine(tFactory.ToString());
+
+            }
+        }
+
     }
-    
+}   
 
