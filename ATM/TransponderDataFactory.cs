@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,24 +22,25 @@ namespace ATM
 
             return track;
         }
-
-        private DateTime CreateDateTime(string _input)
+    
+        private DateTime _datetime;
+        private DateTime CreateDateTime(string input)
         {
-            string input = "yyyymmddhhmmssfff";
-            string yearsub = input.Substring(0, 4);
-            string monthsub = input.Substring(4, 6);
-            string datesub = input.Substring(6, 8);
-            string hoursub = input.Substring(8, 10);
-            string minutesub = input.Substring(10, 12);
-            string secondsub = input.Substring(12, 14);
-            string millisecsub = input.Substring(14, 16);
+            int yearsub = Convert.ToInt32(input.Substring(0, 4));
+            int monthsub = Convert.ToInt32(input.Substring(4, 6));
+            int datesub = Convert.ToInt32(input.Substring(6, 8));
+            int hoursub = Convert.ToInt32(input.Substring(8, 10));
+            int minutesub = Convert.ToInt32(input.Substring(10, 12));
+            int secondsub = Convert.ToInt32(input.Substring(12, 14));
+            int millisecsub = Convert.ToInt32(input.Substring(14, 16));
 
-            Console.WriteLine("Year:{0}", yearsub + " Month:{1}", monthsub +" Date:{2}", datesub + " Hour:{3}",hoursub +" Minutes:{4}", minutesub + " Seconds:{5}", secondsub +" Milliseconds:{6}", millisecsub);
-            // Hvordan kreere datetime objekt. skal returnere datetime objekt, kan være vi skal lave strengene om til integer
-            DateTime value = new DateTime(2018, 04, 05);
-            Console.WriteLine(value);
-            Console.WriteLine(value = DateTime.Today);
-            return value;
+            _datetime = new DateTime(yearsub,monthsub,datesub,hoursub,minutesub,secondsub,millisecsub);
+            _datetime = DateTime.ParseExact(
+                $"{yearsub}/{monthsub}/{datesub} {hoursub}:{minutesub}:{secondsub};{millisecsub}",
+                "yyyy/mm/dd hh:mm:ss:fff", CultureInfo.InvariantCulture);
+            return _datetime;
+
+         
             
         }
 
@@ -47,4 +49,4 @@ namespace ATM
         }
 
     }
-}
+
