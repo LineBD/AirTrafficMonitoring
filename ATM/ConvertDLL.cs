@@ -7,15 +7,9 @@ using TransponderReceiver;
 
 namespace ATM
 {
-    public class TransponderData
+    class ConvertDLL
     {
-        public string Tag { get; set; }
-        public int XCoordinate { get; set; }
-
-        public int YCoordinate { get; set; }
-        public int Altitude { get; set; }
-        public int Timestamp { get; set; }
-
+        public string TransponderData { set; get; }
         public void FlightObject()
         {
             var myReciever = TransponderReceiverFactory.CreateTransponderDataReceiver();
@@ -25,11 +19,6 @@ namespace ATM
         private static void MyReciever_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
             var mylist = e.TransponderData;
-
-            foreach (var track in mylist)
-            {
-                Console.WriteLine(track);
-            }
-        } 
+        }
     }
 }
