@@ -12,7 +12,9 @@ namespace ConsoleAppATM
     {
         static void Main(string[] args)
         {
-
+        Display myDisplay = new Display();
+            myDisplay.DisplayTrack();
+            Console.ReadKey();
         }
     }
 }
