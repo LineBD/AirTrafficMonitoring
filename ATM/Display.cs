@@ -17,7 +17,7 @@ namespace ATM
                     Console.ReadKey();
                 }
             }
-            private static string MyReciever_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
+            private static void MyReciever_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
             {
 
                 var tFactory = new TransponderDataFactory();
@@ -34,7 +34,6 @@ namespace ATM
                     Console.WriteLine(tFactory.ToString());
                     //Console.WriteLine(result);
 
-                    return 
                 }
             }
         }
