@@ -19,11 +19,16 @@ namespace ConsoleAppATM
         }     
                 private static void MyReciever_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
                 {
-                    var mylist = e.TransponderData;
+
+            var tFactory = new TransponderReceiverFactory();
+
+            var mylist = e.TransponderData;
 
                     foreach (var track in mylist)
                     {
-                        Console.WriteLine(track);
+                var result = tFactory.CreateFlight(track);
+
+                Console.WriteLine(track);
                     }
                 }
             }
