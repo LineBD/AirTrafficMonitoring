@@ -43,8 +43,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConvertDLL.cs" />
-    <Compile Include="CreateDateTimeClass.cs" />
     <Compile Include="Display.cs" />
     <Compile Include="TrackDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

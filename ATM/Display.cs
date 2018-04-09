@@ -26,14 +26,9 @@ namespace ATM
 
                 foreach (var track in mylist)
                 {
-                    Console.Write(mylist);
-                    var resultat = tFactory.CreateFlight(track);
-                    //Console.WriteLine("Tag: " + resultat.Tag + "\nX Coordinate: " + resultat.XCoordinate + "\nY Coordinate: " +
-                    //                  resultat.YCoordinate + "\nAltitude: " + resultat.Altitude + "\nTimestamp: " +
-                    //                  resultat.Timestamp);
-                    Console.WriteLine(resultat);
-                    Console.WriteLine(tFactory.ToString());
-                    //Console.WriteLine(result);
+
+                   tFactory.CreateFlight(track);
+                   Console.WriteLine(tFactory.ToString());
 
                 }
             }

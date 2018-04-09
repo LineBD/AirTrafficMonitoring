@@ -10,11 +10,9 @@ namespace ATM
    public class TransponderDataFactory
     {
         private TrackDTO track;
-        private CreateDateTimeClass cdtc;
         public TrackDTO CreateFlight(string trackInfo)
         {
             
-            cdtc = new CreateDateTimeClass();
             track = new TrackDTO();
 
             string[] array = trackInfo.Split(';');
@@ -22,7 +20,8 @@ namespace ATM
             track.XCoordinate = Convert.ToInt32(array[1]);
             track.YCoordinate = Convert.ToInt32(array[2]);
             track.Altitude = Convert.ToInt32(array[3]);
-            track.Timestamp = cdtc.CreateDateTime(array[4]);
+            track.Timestamp = DateTime.ParseExact(array[4], "yyyyMMddHHmmssfff",
+                System.Globalization.CultureInfo.InvariantCulture);
 
             return track;
         }
@@ -31,7 +30,7 @@ namespace ATM
         {
             return "Tag: " + track.Tag + "\nX Coordinate: " + track.XCoordinate + "\nY Coordinate: " +
                    track.YCoordinate + "\nAltitude: " + track.Altitude + "\nTimestamp: " +
-                   track.Timestamp;
+                   track.Timestamp + "\n";
         }
         }
     }
