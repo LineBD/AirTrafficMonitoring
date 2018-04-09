@@ -13,8 +13,9 @@ namespace ATM
         private CreateDateTimeClass cdtc;
         public TrackDTO CreateFlight(string trackInfo)
         {
-            TrackDTO track = new TrackDTO();
+            
             cdtc = new CreateDateTimeClass();
+            track = new TrackDTO();
 
             string[] array = trackInfo.Split(';');
             track.Tag = array[0];

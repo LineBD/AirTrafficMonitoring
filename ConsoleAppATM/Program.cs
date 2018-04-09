@@ -27,8 +27,13 @@ namespace ConsoleAppATM
 
                  foreach (var track in mylist)
                  {
-                     var result = tFactory.CreateDateTime(track);
-                     Console.WriteLine(result);
+                     Console.Write(mylist);
+                     var resultat = tFactory.CreateFlight(track);
+                Console.WriteLine("Tag: " + resultat.Tag + "\nX Coordinate: " + resultat.XCoordinate + "\nY Coordinate: " +
+                                  resultat.YCoordinate + "\nAltitude: " + resultat.Altitude + "\nTimestamp: " +
+                                  resultat.Timestamp);
+                     //var result = tFactory.ToString();
+                     //Console.WriteLine(result);
                  }
                 }
             }
