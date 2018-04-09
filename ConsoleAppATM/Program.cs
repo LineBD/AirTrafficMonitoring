@@ -26,7 +26,7 @@ namespace ConsoleAppATM
 
                     foreach (var track in mylist)
                     {
-                var result = tFactory.CreateFlight(track);
+                var result = tFactory.
 
                 Console.WriteLine(track);
                     }
