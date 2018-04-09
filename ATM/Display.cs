@@ -7,7 +7,7 @@ using TransponderReceiver;
 
 namespace ATM
 {
-    class Display
+    public class Display
     {
         public void DisplayTrack()
         {
