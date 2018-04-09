@@ -27,10 +27,9 @@ namespace ConsoleAppATM
 
                  foreach (var track in mylist)
                  {
-                var result = tFactory.CreateDateTime(track);
-
-                Console.WriteLine(result);
-                    }
+                     var result = tFactory.CreateDateTime(track);
+                     Console.WriteLine(result);
+                 }
                 }
             }
         }
