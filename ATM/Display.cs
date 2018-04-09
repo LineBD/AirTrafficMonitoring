@@ -31,6 +31,7 @@ namespace ATM
                     //Console.WriteLine("Tag: " + resultat.Tag + "\nX Coordinate: " + resultat.XCoordinate + "\nY Coordinate: " +
                     //                  resultat.YCoordinate + "\nAltitude: " + resultat.Altitude + "\nTimestamp: " +
                     //                  resultat.Timestamp);
+                    Console.WriteLine(resultat);
                     Console.WriteLine(tFactory.ToString());
                     //Console.WriteLine(result);
 
