@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public class TrackDTO
+    public class TrackDTO : ITrack
     {
         public string Tag { get; set; }
         public int XCoordinate { get; set; }

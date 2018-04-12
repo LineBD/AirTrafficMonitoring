@@ -13,7 +13,7 @@ namespace ATM.Test.Unit
     [TestFixture()]
     class DisplayTest
     {
-        private Display _uut;
+        private ControllerDisplay _uut;
         private ITransponderReceiver _fakeTransponderReceiver;
         private TransponderDataFactory _fakeFactory;
 
@@ -22,7 +22,7 @@ namespace ATM.Test.Unit
         {
             _fakeTransponderReceiver = Substitute.For<ITransponderReceiver>();
             _fakeFactory = Substitute.For<TransponderDataFactory>();
-            _uut = new Display(_fakeTransponderReceiver);
+            _uut = new ControllerDisplay(_fakeTransponderReceiver);
         }
 
         [Test]

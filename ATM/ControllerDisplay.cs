@@ -7,10 +7,10 @@ using TransponderReceiver;
 
 namespace ATM
 {
-    public class Display
+    public class ControllerDisplay
     {
         private ITransponderReceiver _transponderreceiver;
-        public Display(ITransponderReceiver receiver)
+        public ControllerDisplay(ITransponderReceiver receiver)
         {
             _transponderreceiver = receiver;
         }

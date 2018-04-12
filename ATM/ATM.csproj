@@ -44,7 +44,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Display.cs" />
+    <Compile Include="ControllerDisplay.cs" />
+    <Compile Include="ITrack.cs" />
     <Compile Include="TrackDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransponderDataFactory.cs" />

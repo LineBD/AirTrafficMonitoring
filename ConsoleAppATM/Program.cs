@@ -13,7 +13,7 @@ namespace ConsoleAppATM
         static void Main(string[] args)
         {
 
-            var myDisplay = new Display(TransponderReceiverFactory.CreateTransponderDataReceiver());
+            var myDisplay = new ControllerDisplay(TransponderReceiverFactory.CreateTransponderDataReceiver());
             myDisplay.DisplayTrack();
             Console.ReadKey();
         }
