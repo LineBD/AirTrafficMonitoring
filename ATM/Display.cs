@@ -9,16 +9,22 @@ namespace ATM
 {
     public class Display
     {
+        private ITransponderReceiver _transponderreceiver;
+        public Display(ITransponderReceiver receiver)
+        {
+            _transponderreceiver = receiver;
+        }
+
+
         public void DisplayTrack()
         {
             {
-                var myReciever = TransponderReceiverFactory.CreateTransponderDataReceiver();
-                myReciever.TransponderDataReady += MyReciever_transponderDataReady;
-                Console.ReadKey();
+                _transponderreceiver.TransponderDataReady += MyReciever_transponderDataReady;
+                
             }
         }
 
-        public static void MyReciever_transponderDataReady(object sender, RawTransponderDataEventArgs e)
+        public void MyReciever_transponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
 
             var tFactory = new TransponderDataFactory();
