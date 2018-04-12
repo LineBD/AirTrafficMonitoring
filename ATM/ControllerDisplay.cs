@@ -28,14 +28,16 @@ namespace ATM
         {
 
             var tFactory = new TransponderDataFactory();
+            var ffl = new FilterFlightLimits();
             //var tdataConsole = new TransponderDataConsole();
 
             var mylist = e.TransponderData;
-
+            
             foreach (var track in mylist)
             {
 
                 tFactory.CreateFlight(track);
+                ffl.Filtering(); //virker ikke
                 Console.WriteLine(tFactory.ToString());
 
             }

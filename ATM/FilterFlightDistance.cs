@@ -8,6 +8,10 @@ namespace ATM
 {
    public class FilterFlightDistance
     {
+        public void Filtering()
+        {
 
+            // Gemmes i en liste til sidst?
+        }
     }
 }
