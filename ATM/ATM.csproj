@@ -48,6 +48,7 @@
     <Compile Include="ITrack.cs" />
     <Compile Include="TrackDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransponderDataConsole.cs" />
     <Compile Include="TransponderDataFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

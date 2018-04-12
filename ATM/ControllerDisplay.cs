@@ -28,6 +28,7 @@ namespace ATM
         {
 
             var tFactory = new TransponderDataFactory();
+            var tdataConsole = new TransponderDataConsole();
 
             var mylist = e.TransponderData;
 
@@ -35,7 +36,7 @@ namespace ATM
             {
 
                 tFactory.CreateFlight(track);
-                Console.WriteLine(tFactory.ToString());
+                Console.WriteLine(tdataConsole.ToString());
 
             }
         }
