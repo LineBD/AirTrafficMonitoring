@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControllerDisplay.cs" />
+    <Compile Include="FilterFlightDistance.cs" />
+    <Compile Include="FilterFlightLimits.cs" />
     <Compile Include="ITrack.cs" />
     <Compile Include="TrackDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
