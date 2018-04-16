@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class CourseCalc
+    class CourseCalc: ICourseCalc
+
     {
 
-        public double CalculateCourse(int xCoordinate, int yCoordinate)
-        {
-            // https://en.wikipedia.org/wiki/Polar_coordinate_system
+    public void CalculateCourse(int xCoordinate, int yCoordinate)
+    {
+        // https://en.wikipedia.org/wiki/Polar_coordinate_system
 
-            double theta = Math.Atan2(xCoordinate, yCoordinate);
+        double theta = Math.Atan2(xCoordinate, yCoordinate);
 
-            double CourseDegrees = theta * (180 / Math.PI);
+        double CourseDegrees = theta * (180 / Math.PI);
 
-            return CourseDegrees;
-        }
+    }
     }
 }

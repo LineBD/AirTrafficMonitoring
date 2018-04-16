@@ -48,7 +48,9 @@
     <Compile Include="CourseCalc.cs" />
     <Compile Include="FilterFlightDistance.cs" />
     <Compile Include="FilterFlightLimits.cs" />
-    <Compile Include="ITrack.cs" />
+    <Compile Include="Interfaces\ICourseCalc.cs" />
+    <Compile Include="Interfaces\ITrack.cs" />
+    <Compile Include="Interfaces\IVelocityCalc.cs" />
     <Compile Include="SeparationEvent.cs" />
     <Compile Include="TrackDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ATM
 {
-    class VelocityCalc
+    class VelocityCalc: IVelocityCalc
     {
         private List<TrackDTO> _tracklist = new List<TrackDTO>();
 
