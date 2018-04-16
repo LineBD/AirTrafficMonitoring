@@ -49,6 +49,7 @@
     <Compile Include="FilterFlightDistance.cs" />
     <Compile Include="FilterFlightLimits.cs" />
     <Compile Include="ITrack.cs" />
+    <Compile Include="SeparationEvent.cs" />
     <Compile Include="TrackDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransponderDataConsole.cs" />
