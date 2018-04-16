@@ -9,8 +9,8 @@ namespace ATM
 {
    public class TransponderDataFactory
     {
-        private ITrack track;
-        public ITrack CreateFlight(string trackInfo)
+        private TrackDTO track;
+        public TrackDTO CreateFlight(string trackInfo)
         {
             
             track = new TrackDTO();

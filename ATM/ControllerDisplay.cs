@@ -32,12 +32,17 @@ namespace ATM
             //var tdataConsole = new TransponderDataConsole();
 
             var mylist = e.TransponderData;
+
+            var toList = new List<TrackDTO>();
             
             foreach (var track in mylist)
             {
 
-                tFactory.CreateFlight(track);
-                ffl.Filtering(); //virker ikke
+                var to = tFactory.CreateFlight(track);
+                if (ffl.State == true)
+                {
+                    toList.Add(to);
+                }
                 Console.WriteLine(tFactory.ToString());
 
             }
