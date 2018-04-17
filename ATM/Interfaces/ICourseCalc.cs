@@ -8,6 +8,6 @@ namespace ATM
 {
     interface ICourseCalc
     {
-        void CalculateCourse(int xCoordinate, int yCoordinate);
+        void CalculateCourse(int x1Coordinate, int x2Coordinate, int y1Coordinate, int y2Coordinate);
     }
 }

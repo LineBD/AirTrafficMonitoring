@@ -10,8 +10,11 @@ namespace ATM
 
     {
 
-    public void CalculateCourse(int xCoordinate, int yCoordinate)
+    public void CalculateCourse(int x1Coordinate, int x2Coordinate, int y1Coordinate, int y2Coordinate)
     {
+        double xCoordinate = x2Coordinate - x1Coordinate;
+        double yCoordinate = y2Coordinate - y1Coordinate;
+
         // https://en.wikipedia.org/wiki/Polar_coordinate_system
 
         double theta = Math.Atan2(xCoordinate, yCoordinate);
