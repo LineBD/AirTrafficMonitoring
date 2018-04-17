@@ -13,6 +13,8 @@ namespace ATM
 
         public int YCoordinate { get; set; }
         public int Altitude { get; set; }
+        public int Velocity { get; set; }
+        public int Course { get; set; }
         public DateTime Timestamp { get; set; }
 
 

@@ -13,15 +13,17 @@ namespace ATM
         public TrackDTO CreateFlight(string trackInfo)
         {
             
-            track = new TrackDTO();
+            TrackDTO track = new TrackDTO();
 
-            string[] array = trackInfo.Split(';');
-            track.Tag = array[0];
-            track.XCoordinate = Convert.ToInt32(array[1]);
-            track.YCoordinate = Convert.ToInt32(array[2]);
-            track.Altitude = Convert.ToInt32(array[3]);
-            track.Timestamp = DateTime.ParseExact(array[4], "yyyyMMddHHmmssfff",
+            var info = trackInfo.Split(';');
+            track.Tag = info[0];
+            track.XCoordinate = Convert.ToInt32(info[1]);
+            track.YCoordinate = Convert.ToInt32(info[2]);
+            track.Altitude = Convert.ToInt32(info[3]);
+            track.Timestamp = DateTime.ParseExact(info[4], "yyyyMMddHHmmssfff",
                 System.Globalization.CultureInfo.InvariantCulture);
+            track.Velocity = 0;
+            track.Course = 0;
 
             return track;
         }
