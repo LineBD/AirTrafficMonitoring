@@ -44,7 +44,7 @@ namespace ATM
                     _write.WriteFlight(trackObject);
                 }
                 
-                Console.WriteLine(trackObjectList);
+                //Console.WriteLine(trackObjectList);
 
             }
         }

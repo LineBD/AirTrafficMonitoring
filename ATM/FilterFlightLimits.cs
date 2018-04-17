@@ -8,9 +8,8 @@ namespace ATM
 {
     public class FilterFlightLimits : IFilterFlightLimits
     {   
-        private ITrack track;
         public bool State { get; set; }
-        public bool Filtering()
+        public bool Filtering(ITrack track)
         {
             if (track.Altitude >= 500 && track.Altitude <= 20000 && track.XCoordinate >= 10000 && track.XCoordinate <= 90000 && track.YCoordinate >= 10000 && track.YCoordinate <= 90000) //Regner den i meter?
             {

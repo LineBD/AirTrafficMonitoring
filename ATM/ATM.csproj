@@ -52,8 +52,8 @@
     <Compile Include="Interfaces\ICourseCalc.cs" />
     <Compile Include="Interfaces\ITrack.cs" />
     <Compile Include="Interfaces\IVelocityCalc.cs" />
-    <Compile Include="ITransponderDataFactory.cs" />
-    <Compile Include="IWrite.cs" />
+    <Compile Include="Interfaces\ITransponderDataFactory.cs" />
+    <Compile Include="Interfaces\IWrite.cs" />
     <Compile Include="SeparationEvent.cs" />
     <Compile Include="TrackDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

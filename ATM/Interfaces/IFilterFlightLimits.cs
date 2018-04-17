@@ -9,6 +9,6 @@ namespace ATM
     public interface IFilterFlightLimits
     {
         bool State { get; set; }
-        bool Filtering();
+        bool Filtering(ITrack track);
     }
 }
