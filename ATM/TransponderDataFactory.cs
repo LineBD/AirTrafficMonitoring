@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-   public class TransponderDataFactory
+   public class TransponderDataFactory: ITransponderDataFactory
     {
-        private TrackDTO track;
+        private TrackDTO _track;
+
+        public TransponderDataFactory(TrackDTO track)
+        {
+            _track = track;
+        }
         public TrackDTO CreateFlight(string trackInfo)
         {
             
@@ -28,12 +33,6 @@ namespace ATM
             return track;
         }
 
-        public override string ToString()
-        {
-            return "Tag: " + track.Tag + "\nX Coordinate: " + track.XCoordinate + "\nY Coordinate: " +
-                   track.YCoordinate + "\nAltitude: " + track.Altitude + "\nTimestamp: " +
-                   track.Timestamp + "\n";
-        }
         }
     }
 

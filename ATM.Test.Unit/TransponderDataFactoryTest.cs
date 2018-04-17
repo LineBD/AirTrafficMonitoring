@@ -10,7 +10,8 @@ namespace ATM.Test.Unit
     [TestFixture]
     public class TransponderDataFactoryTest
     {
-        private TransponderDataFactory _uut; 
+        private TransponderDataFactory _uut;
+        private ITrack _track;
         [SetUp]
         public void SetUp()
         {

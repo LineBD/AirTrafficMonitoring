@@ -10,40 +10,41 @@ namespace ATM
     public class ControllerDisplay
     {
         private ITransponderReceiver _transponderreceiver;
-        public ControllerDisplay(ITransponderReceiver receiver)
+        private IFilterFlightLimits _filterFlightLimits;
+        private ITrack _track;
+        private ITransponderDataFactory _factory;
+        private IWrite _write;
+
+
+        public ControllerDisplay(ITransponderReceiver receiver, IFilterFlightLimits filterLimit, ITrack track, ITransponderDataFactory factory, IWrite write)
         {
             _transponderreceiver = receiver;
-        }
-
-
-        public void DisplayTrack()
-        {
-            {
-                _transponderreceiver.TransponderDataReady += MyReciever_transponderDataReady;
-                
-            }
+            _filterFlightLimits = filterLimit;
+            _track = track;
+            _factory = factory;
+            _write = write;
+            _transponderreceiver.TransponderDataReady += MyReciever_transponderDataReady;
         }
 
         public void MyReciever_transponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
 
-            var tFactory = new TransponderDataFactory();
-            var ffl = new FilterFlightLimits();
-          
-
             var mylist = e.TransponderData;
 
             var trackObjectList = new List<TrackDTO>();
-            
+
+
             foreach (var track in mylist)
             {
 
-                var trackObject = tFactory.CreateFlight(track);
-                if (ffl.State == true)
+                var trackObject = _factory.CreateFlight(track);
+                if (_filterFlightLimits.State == true)
                 {
                     trackObjectList.Add(trackObject);
+                    _write.WriteFlight(trackObject);
                 }
-                Console.WriteLine(tFactory.ToString());
+                
+                Console.WriteLine(trackObjectList);
 
             }
         }

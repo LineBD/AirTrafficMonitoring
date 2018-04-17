@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public class FilterFlightLimits 
-    {
-        TransponderDataFactory tdf = new TransponderDataFactory();
-      
-        TrackDTO track;
+    public class FilterFlightLimits : IFilterFlightLimits
+    {   
+        private ITrack track;
         public bool State { get; set; }
-        private List<ITrack> FlightList = new List<ITrack>(); // Skal bestemme os for list eller array 
-        public void Filtering(bool State)
+        public bool Filtering()
         {
             if (track.Altitude >= 500 && track.Altitude <= 20000 && track.XCoordinate >= 10000 && track.XCoordinate <= 90000 && track.YCoordinate >= 10000 && track.YCoordinate <= 90000) //Regner den i meter?
             {
@@ -23,8 +20,8 @@ namespace ATM
             {
                 State = false;
             }
-            
-           
+
+            return State;
         }
 
     }

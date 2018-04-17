@@ -48,15 +48,18 @@
     <Compile Include="CourseCalc.cs" />
     <Compile Include="FilterFlightDistance.cs" />
     <Compile Include="FilterFlightLimits.cs" />
+    <Compile Include="Interfaces\IFilterFlightLimits.cs" />
     <Compile Include="Interfaces\ICourseCalc.cs" />
     <Compile Include="Interfaces\ITrack.cs" />
     <Compile Include="Interfaces\IVelocityCalc.cs" />
+    <Compile Include="ITransponderDataFactory.cs" />
+    <Compile Include="IWrite.cs" />
     <Compile Include="SeparationEvent.cs" />
     <Compile Include="TrackDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TransponderDataConsole.cs" />
     <Compile Include="TransponderDataFactory.cs" />
     <Compile Include="VelocityCalc.cs" />
+    <Compile Include="WriteToConsole.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
