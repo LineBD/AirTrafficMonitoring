@@ -10,18 +10,6 @@ namespace ATM
     {
         TransponderDataFactory tdf = new TransponderDataFactory();
       
-
-
-
-        public FilterFlightLimits(TrackDTO trackDTO, int altitude, int xcoordinate, int ycoordinate)
-        {
-            tdf.CreateFlight() = trackDTO;
-            trackDTO.Altitude = altitude;
-            trackDTO.XCoordinate = xcoordinate;
-            trackDTO.YCoordinate = ycoordinate;
-        
-        }
-        
         TrackDTO track;
         public bool State { get; set; }
         private List<ITrack> FlightList = new List<ITrack>(); // Skal bestemme os for list eller array 

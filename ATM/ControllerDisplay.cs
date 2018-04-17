@@ -29,19 +29,19 @@ namespace ATM
 
             var tFactory = new TransponderDataFactory();
             var ffl = new FilterFlightLimits();
-            //var tdataConsole = new TransponderDataConsole();
+          
 
             var mylist = e.TransponderData;
 
-            var toList = new List<TrackDTO>();
+            var trackObjectList = new List<TrackDTO>();
             
             foreach (var track in mylist)
             {
 
-                var to = tFactory.CreateFlight(track);
+                var trackObject = tFactory.CreateFlight(track);
                 if (ffl.State == true)
                 {
-                    toList.Add(to);
+                    trackObjectList.Add(trackObject);
                 }
                 Console.WriteLine(tFactory.ToString());
 
