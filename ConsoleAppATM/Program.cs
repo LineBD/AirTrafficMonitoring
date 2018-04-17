@@ -12,7 +12,7 @@ namespace ConsoleAppATM
     {
         static void Main(string[] args)
         {
-            var track = new TrackDTO();
+            var track = new Track();
             ITransponderDataFactory factory = new TransponderDataFactory(track);
             IFilterFlightLimits filterlimits = new FilterFlightLimits();
             IWrite writer = new WriteToConsole();

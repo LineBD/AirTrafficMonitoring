@@ -9,16 +9,16 @@ namespace ATM
 {
    public class TransponderDataFactory: ITransponderDataFactory
     {
-        private TrackDTO _track;
+        private Track _track;
 
-        public TransponderDataFactory(TrackDTO track)
+        public TransponderDataFactory(Track track)
         {
             _track = track;
         }
-        public TrackDTO CreateFlight(string trackInfo)
+        public Track CreateFlight(string trackInfo)
         {
             
-            TrackDTO track = new TrackDTO();
+            Track track = new Track();
 
             var info = trackInfo.Split(';');
             track.Tag = info[0];

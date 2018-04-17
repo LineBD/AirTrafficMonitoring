@@ -31,19 +31,19 @@ namespace ATM
 
             var mylist = e.TransponderData;
 
-            var trackObjectList = new List<TrackDTO>();
+            var trackObjectList = new List<Track>();
 
 
             foreach (var track in mylist)
             {
 
-                var trackObject = _factory.CreateFlight(track);
+                Track trackObject = _factory.CreateFlight(track);
                 if (_filterFlightLimits.State == true)
                 {
                     trackObjectList.Add(trackObject);
                     _write.WriteFlight(trackObject);
                 }
-                
+                                
                 //Console.WriteLine(trackObjectList);
 
             }

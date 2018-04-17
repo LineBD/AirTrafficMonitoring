@@ -8,7 +8,7 @@ namespace ATM
 {
     public interface ITransponderDataFactory
     {
-        TrackDTO CreateFlight(string trackInfo);
+        Track CreateFlight(string trackInfo);
         string ToString();
     }
 }

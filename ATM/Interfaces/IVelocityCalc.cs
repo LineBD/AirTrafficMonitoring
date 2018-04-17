@@ -8,6 +8,6 @@ namespace ATM
 {
     interface IVelocityCalc
     {
-        void VelocityCalculator(TrackDTO track);
+        void VelocityCalculator(Track track);
     }
 }

@@ -9,9 +9,9 @@ namespace ATM
 {
     class VelocityCalc: IVelocityCalc
     {
-        private List<TrackDTO> _tracklist = new List<TrackDTO>();
+        private List<Track> _tracklist = new List<Track>();
 
-        public void VelocityCalculator(TrackDTO track)
+        public void VelocityCalculator(Track track)
         {
 
             _tracklist.Add(track);
