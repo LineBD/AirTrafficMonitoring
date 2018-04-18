@@ -12,13 +12,13 @@ namespace ConsoleAppATM
     {
         static void Main(string[] args)
         {
-            var track = new Track();
+            Track track = new Track();
             ITransponderDataFactory factory = new TransponderDataFactory(track);
             IFilterFlightLimits filterlimits = new FilterFlightLimits();
             IWrite writer = new WriteToConsole();
             var myReciever = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
-            var myDisplay = new ControllerDisplay(myReciever,filterlimits,track,factory,writer);
+            var myDisplay = new ControllerDisplay(myReciever,filterlimits,factory,writer);
             Console.ReadKey();
         }
     }
