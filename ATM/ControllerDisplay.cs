@@ -16,11 +16,10 @@ namespace ATM
         private IWrite _write;
 
 
-        public ControllerDisplay(ITransponderReceiver receiver, IFilterFlightLimits filterLimit, ITrack track, ITransponderDataFactory factory, IWrite write)
+        public ControllerDisplay(ITransponderReceiver receiver, IFilterFlightLimits filterLimit, ITransponderDataFactory factory, IWrite write)
         {
             _transponderreceiver = receiver;
             _filterFlightLimits = filterLimit;
-            _track = track;
             _factory = factory;
             _write = write;
             _transponderreceiver.TransponderDataReady += MyReciever_transponderDataReady;
@@ -38,7 +37,7 @@ namespace ATM
             {
 
                 Track trackObject = _factory.CreateFlight(track);
-                if (_filterFlightLimits.State == true)
+                if (_filterFlightLimits.Filtering(trackObject) == true)
                 {
                     trackObjectList.Add(trackObject);
                     _write.WriteFlight(trackObject);
