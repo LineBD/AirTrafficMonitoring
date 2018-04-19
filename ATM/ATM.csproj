@@ -45,11 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConflictingTracks.cs" />
+    <Compile Include="ConflictTracksSubject.cs" />
     <Compile Include="ControllerDisplay.cs" />
     <Compile Include="CourseCalc.cs" />
     <Compile Include="EventComparison.cs" />
     <Compile Include="FilterFlightDistance.cs" />
     <Compile Include="FilterFlightLimits.cs" />
+    <Compile Include="IConflictTracks.cs" />
     <Compile Include="Interfaces\IEventComparison.cs" />
     <Compile Include="Interfaces\IFilterFlightLimits.cs" />
     <Compile Include="Interfaces\ICourseCalc.cs" />
