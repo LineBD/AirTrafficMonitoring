@@ -13,7 +13,7 @@ namespace ATM.Test.Unit
     class FilterFlightLimitsTest
     {
         private IFilterFlightLimits _uut;
-        private ITransponderDataFactory factory;
+        private ITrackParsing _trackparsing;
        // private Track trackob;
         private string trackinfo;
         private Track trackob;
@@ -21,8 +21,8 @@ namespace ATM.Test.Unit
        public void SetUp()
         {
             _uut = new FilterFlightLimits();
-            factory = new TrackParsing(trackob);
-            trackob = factory.CreateFlight(trackinfo);
+            _trackparsing = new TrackParsing(trackob);
+            trackob = _trackparsing.CreateFlight(trackinfo);
            
         }
         [Test]

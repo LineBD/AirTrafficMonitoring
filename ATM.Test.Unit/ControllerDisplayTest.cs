@@ -15,7 +15,7 @@ namespace ATM.Test.Unit
         private ControllerDisplay _uut;
         private IFilterFlightLimits _filter;
         private ITransponderReceiver _receiver;
-        private ITransponderDataFactory _factory;
+        private ITrackParsing _trackparsing;
         private IWrite _writer;
 
         [SetUp]
@@ -23,9 +23,9 @@ namespace ATM.Test.Unit
         {
             _filter = Substitute.For<IFilterFlightLimits>();
             _receiver = Substitute.For<ITransponderReceiver>();
-            _factory = Substitute.For<ITransponderDataFactory>();
+            _trackparsing = Substitute.For<ITrackParsing>();
             _writer = Substitute.For<IWrite>();
-            _uut = new ControllerDisplay(_receiver,_filter, _factory,_writer);
+            _uut = new ControllerDisplay(_receiver,_filter, _trackparsing,_writer);
 
 
         }
