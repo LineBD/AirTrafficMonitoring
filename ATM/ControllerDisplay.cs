@@ -33,7 +33,6 @@ namespace ATM
 
             var mylist = e.TransponderData;
 
-
             foreach (var track in mylist)
             {
 
@@ -41,10 +40,10 @@ namespace ATM
                 if (_filterFlightLimits.Filtering(trackObject) == true)
                 {
                     _trackObjectList.Add(trackObject);
-                   // _write.WriteFlight(trackObject);
+                   _write.WriteFlight(trackObject,_conflict);
                 }
                                 
-                //Console.WriteLine(trackObjectList);
+                //Console.WriteLine(trackObject);
 
             }
         }

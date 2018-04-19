@@ -48,7 +48,7 @@
     <Compile Include="ControllerDisplay.cs" />
     <Compile Include="CourseCalc.cs" />
     <Compile Include="FilterFlightLimits.cs" />
-    <Compile Include="IConflictingTracks.cs" />
+    <Compile Include="Interfaces\IConflictingTracks.cs" />
     <Compile Include="Interfaces\IFilterFlightLimits.cs" />
     <Compile Include="Interfaces\ICourseCalc.cs" />
     <Compile Include="Interfaces\ITrack.cs" />
