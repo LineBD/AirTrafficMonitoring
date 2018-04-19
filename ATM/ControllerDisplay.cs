@@ -15,9 +15,10 @@ namespace ATM
         private ITrackParsing _trackparsing;
         private IWrite _write;
         private List<Track> _trackObjectList;
+        private ConflictingTracks _conflict;
         
 
-        public ControllerDisplay(ITransponderReceiver receiver, IFilterFlightLimits filterLimit, ITrackParsing trackparsing, IWrite write, List<Track> trackObjectList)
+        public ControllerDisplay(ITransponderReceiver receiver, IFilterFlightLimits filterLimit, ITrackParsing trackparsing, IWrite write, List<Track> trackObjectList, ConflictingTracks conflict)
         {
             _transponderreceiver = receiver;
             _filterFlightLimits = filterLimit;

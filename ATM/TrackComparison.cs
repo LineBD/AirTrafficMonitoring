@@ -8,8 +8,8 @@ namespace ATM
 {
    public class TrackComparison : ITrackComparison
     {
-        public List<Track> _compareList { get; }
-        public List<Track> HandleTrack(List<Track> _oldTracks, List<Track> _newTracks, Track track)
+        
+        public void HandleTrack(List<Track> _oldTracks, List<Track> _newTracks, Track track)
         {
             if (_newTracks.Exists(x => x.Tag == track.Tag))
             {
@@ -31,7 +31,7 @@ namespace ATM
             {
                 _newTracks.Add(track);
             }
-            return _compareList;
+            
         }
 
     }

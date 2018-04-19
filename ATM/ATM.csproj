@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConflictingTracks.cs" />
     <Compile Include="ControllerDisplay.cs" />
     <Compile Include="CourseCalc.cs" />
     <Compile Include="EventComparison.cs" />
