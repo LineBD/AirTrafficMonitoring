@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public class ConflictingTracks
+    public class ConflictingTracks: IConflictingTracks
     {
 
         //Skal trackinfo i gennem trackparsing og controller 2 x - så vi får returneret to lister vi kan sammenligne?? HVORDAN gør vi det
@@ -40,6 +40,11 @@ namespace ATM
             }
             _currenttracks = newTrack;
             //Udskriv!
+        }
+        public override string ToString()
+        {
+            return "Hastighed:" + _velocity + "\n Kurs:" + _course;
+
         }
     }
 }

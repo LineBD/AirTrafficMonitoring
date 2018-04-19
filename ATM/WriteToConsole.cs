@@ -8,9 +8,10 @@ namespace ATM
 {
     public class WriteToConsole : IWrite
     {
-        public void WriteFlight(ITrack track)
+        public void WriteFlight(ITrack track , IConflictingTracks conflictingtrack)
         {
             Console.WriteLine(track.ToString());
+            Console.WriteLine(conflictingtrack.ToString());
         }
     }
 }
