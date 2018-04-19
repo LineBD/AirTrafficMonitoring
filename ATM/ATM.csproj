@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConflictingTracks.cs" />
+    <Compile Include="ConflictTracks.cs" />
     <Compile Include="ConflictTracksSubject.cs" />
     <Compile Include="ControllerDisplay.cs" />
     <Compile Include="CourseCalc.cs" />

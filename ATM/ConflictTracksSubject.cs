@@ -11,15 +11,18 @@ namespace ATM
         private List<IConflictTracks> _conflictList = new List<IConflictTracks>();
         public void Attach(IConflictTracks conflicts)
         {
-
+            _conflictList.Add(conflicts);
         }
-        public void Detach()
+        public void Detach(IConflictTracks conflicts)
         {
-
+            _conflictList.Remove(conflicts);
         }
         public void Notify()
         {
-
+            foreach (var observer in observerlist)
+            {
+                observer.
+            }
         }
     }
 }
