@@ -18,7 +18,7 @@ namespace ATM
         {
             TimeSpan TimeDifference = track2.Timestamp.Subtract(track1.Timestamp);
             var Distance = Math.Sqrt(Math.Pow((track2.XCoordinate - track1.XCoordinate), 2) + Math.Pow((track2.YCoordinate - track1.YCoordinate), 2));
-            var Velocity = Distance / Math.Abs(TimeDifference.TotalSeconds);
+            var Velocity = Distance / Math.Abs(TimeDifference.TotalSeconds);//https://stackoverflow.com/questions/845379/difference-between-two-datetimes-c
             return Velocity;
         }
 
@@ -60,4 +60,4 @@ namespace ATM
 
     }
 }
-}
+
