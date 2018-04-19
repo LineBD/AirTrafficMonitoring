@@ -32,8 +32,10 @@ namespace ATM.Test.Unit
         [Test]
         public  void TrackObjectCreated_TrackObjectIsTrue_TrackObjectAddedToList()
         {
+            var fligtlist = new List<string>() { "AIM500;40000;50000;60000;20161011221035800" };
             //teste om true eller false returneres - også se om et objekt tilføjes i listen
-           
+            _uut.MyReciever_transponderDataReady(this, new RawTransponderDataEventArgs(fligtlist));
+            Assert.That(_uut.MyReciever_transponderDataReady(this, new RawTransponderDataEventArgs(fligtlist)), Is.EqualTo(false));
         }
         [Test]
         public void TrackObjectCreated_TrackObjectIsFalse_TrackObjectNotAddedToList()
