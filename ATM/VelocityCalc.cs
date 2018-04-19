@@ -16,9 +16,9 @@ namespace ATM
 
         public double CalculateVelocity(ITrack track1, ITrack track2)
         {
-            var TimeDifference = track2.Timestamp.Subtract(track1.Timestamp);
+            TimeSpan TimeDifference = track2.Timestamp.Subtract(track1.Timestamp);
             var Distance = Math.Sqrt(Math.Pow((track2.XCoordinate - track1.XCoordinate), 2) + Math.Pow((track2.YCoordinate - track1.YCoordinate), 2));
-            var Velocity = Distance / Math.Abs(Convert.ToDouble(TimeDifference));
+            var Velocity = Distance / Math.Abs(TimeDifference.TotalSeconds);
             return Velocity;
         }
 
