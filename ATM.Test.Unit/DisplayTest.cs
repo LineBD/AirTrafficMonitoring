@@ -15,13 +15,13 @@
 //    {
 //        private ControllerDisplay _uut;
 //        private ITransponderReceiver _fakeTransponderReceiver;
-//        private TransponderDataFactory _fakeFactory;
+//        private TrackParsing _fakeTrackParsing;
 
 //        [SetUp]
 //        public void SetUp()
 //        {
 //            _fakeTransponderReceiver = Substitute.For<ITransponderReceiver>();
-//            _fakeFactory = Substitute.For<TransponderDataFactory>();
+//            _fakeTrackParsing = Substitute.For<TrackParsing>();
 //            _uut = new ControllerDisplay(_fakeTransponderReceiver);
 //        }
 

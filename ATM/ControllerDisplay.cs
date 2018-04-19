@@ -14,10 +14,10 @@ namespace ATM
         private ITrack _track;
         private ITrackParsing _trackparsing;
         private IWrite _write;
-        private List<Track> _trackObjectList;
+        private List<ITrack> _trackObjectList;
         
 
-        public ControllerDisplay(ITransponderReceiver receiver, IFilterFlightLimits filterLimit, ITrackParsing trackparsing, IWrite write, List<Track> trackObjectList)
+        public ControllerDisplay(ITransponderReceiver receiver, IFilterFlightLimits filterLimit, ITrackParsing trackparsing, IWrite write, List<ITrack> trackObjectList)
         {
             _transponderreceiver = receiver;
             _filterFlightLimits = filterLimit;
