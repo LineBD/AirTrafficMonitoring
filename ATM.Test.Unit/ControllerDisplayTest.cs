@@ -30,22 +30,24 @@ namespace ATM.Test.Unit
             _trackObjectList = Substitute.For<List<ITrack>>();
             _uut = new ControllerDisplay(_receiver,_filter, _trackparsing,_writer, _trackObjectList);
             _track = Substitute.For<ITrack>();
+
+            var track = "AIM500;40000;50000;60000;20161011221035800";
+            var trackliste = new List<string>();
+            trackliste.Add(track);
+
+            var transponderevent = new RawTransponderDataEventArgs(trackliste);
         }
 
         [Test]
         public void TransponderDataRecived_CallCreateFlight_FlightIsCreated()
         {
-            var flightList = new List<string>() { "AIM500;40000;50000;60000;20161011221035800" };
-            _uut.MyReciever_transponderDataReady(this, new RawTransponderDataEventArgs(flightList));
+          
             _receiver.Received().TransponderDataReady += _uut.MyReciever_transponderDataReady;
-
         }
 
         [Test]
         public void TransponderDataReady_Called_IsTrue()
         {
-            var flightList = new List<string>() { "AIM500;40000;50000;60000;20161011221035800" };
-            _uut.MyReciever_transponderDataReady(this, new RawTransponderDataEventArgs(flightList));
             _trackparsing.Received().CreateFlight("AIM500;40000;50000;60000;20161011221035800");
         }
 
@@ -53,14 +55,13 @@ namespace ATM.Test.Unit
         public  void TrackObjectCreated_FilterReturnsTrue_TrackObjectAddedToList()
         {
             _filter.Filtering(Arg.Any<ITrack>()).Returns(true);
-            //var flightList = new List<string>() { "AIM500;40000;50000;60000;20161011221035800" };
-           // _uut.MyReciever_transponderDataReady(this, new RawTransponderDataEventArgs(flightList));
-           Assert.That(_trackObjectList.Contains(Arg.Any<ITrack>()));
+            _trackObjectList.Received().Add(Arg.Any<ITrack>());
         }
         [Test]
         public void TrackObjectCreated_TrackObjectIsFalse_TrackObjectNotAddedToList()
         {
-
+            _filter.Filtering(Arg.Any<ITrack>()).Returns(false);
+            _trackObjectList.DidNotReceive().Add(Arg.Any<ITrack>());
         }
     }
 }
