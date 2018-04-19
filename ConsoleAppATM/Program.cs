@@ -12,9 +12,10 @@ namespace ConsoleAppATM
     {
         static void Main(string[] args)
         {
+            ConflictingTracks _ct = new ConflictingTracks();
             Track track = new Track();
             ITrackParsing factory = new TrackParsing(track);
-            IFilterFlightLimits filterlimits = new FilterFlightLimits();
+            IFilterFlightLimits filterlimits = new FilterFlightLimits(_ct);
             IWrite writer = new WriteToConsole();
             List<ITrack> trackobjectlist = new List<ITrack>();
             var myReciever = TransponderReceiverFactory.CreateTransponderDataReceiver();

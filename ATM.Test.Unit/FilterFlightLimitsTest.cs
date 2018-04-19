@@ -17,10 +17,11 @@ namespace ATM.Test.Unit
        // private Track trackob;
         private string trackinfo;
         private Track trackob;
+        private ConflictingTracks _ct;
         [SetUp]
        public void SetUp()
         {
-            _uut = new FilterFlightLimits();
+            _uut = new FilterFlightLimits(_ct);
             _trackparsing = Substitute.For<ITrackParsing>();
 
 
