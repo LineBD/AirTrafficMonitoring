@@ -18,6 +18,7 @@ namespace ATM.Test.Unit
         private ITrackParsing _trackparsing;
         private IWrite _writer;
         private ITrack _track;
+        private List<ITrack> _trackObjectList;
 
         [SetUp]
         public void Setup()
@@ -26,26 +27,41 @@ namespace ATM.Test.Unit
             _receiver = Substitute.For<ITransponderReceiver>();
             _trackparsing = Substitute.For<ITrackParsing>();
             _writer = Substitute.For<IWrite>();
-            _uut = new ControllerDisplay(_receiver,_filter, _trackparsing,_writer);
+            _trackObjectList = Substitute.For<List<ITrack>>();
+            _uut = new ControllerDisplay(_receiver,_filter, _trackparsing,_writer, _trackObjectList);
             _track = Substitute.For<ITrack>();
 
+            var track = "AIM500;40000;50000;60000;20161011221035800";
+            var trackliste = new List<string>();
+            trackliste.Add(track);
 
+            var transponderevent = new RawTransponderDataEventArgs(trackliste);
         }
-        [Test]
-        [TestCase(true)]
-        public  void TrackObjectCreated_TrackObjectIsTrue_TrackObjectAddedToList(FilterFlightLimits filter)
-        {
-            
-           // var fligtlist = new List<string>() { "AIM500;40000;50000;60000;20161011221035800" };
-            //teste om true eller false returneres - også se om et objekt tilføjes i listen
-            _uut.MyReciever_transponderDataReady(this, new RawTransponderDataEventArgs();
 
-            Assert.That(_uut.MyReciever_transponderDataReady(this, new RawTransponderDataEventArgs(fligtlist)), Is.EqualTo(false));
+        [Test]
+        public void TransponderDataRecived_CallCreateFlight_FlightIsCreated()
+        {
+          
+            _receiver.Received().TransponderDataReady += _uut.MyReciever_transponderDataReady;
+        }
+
+        [Test]
+        public void TransponderDataReady_Called_IsTrue()
+        {
+            _trackparsing.Received().CreateFlight("AIM500;40000;50000;60000;20161011221035800");
+        }
+
+        [Test]
+        public  void TrackObjectCreated_FilterReturnsTrue_TrackObjectAddedToList()
+        {
+            _filter.Filtering(Arg.Any<ITrack>()).Returns(true);
+            _trackObjectList.Received().Add(Arg.Any<ITrack>());
         }
         [Test]
         public void TrackObjectCreated_TrackObjectIsFalse_TrackObjectNotAddedToList()
         {
-
+            _filter.Filtering(Arg.Any<ITrack>()).Returns(false);
+            _trackObjectList.DidNotReceive().Add(Arg.Any<ITrack>());
         }
     }
 }
