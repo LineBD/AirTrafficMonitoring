@@ -55,7 +55,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControllerDisplayTest.cs" />
     <Compile Include="DisplayTest.cs" />
+    <Compile Include="FilterFlightLimitsTest.cs" />
     <Compile Include="TransponderDataFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
