@@ -13,8 +13,8 @@ namespace ATM
 
         int YCoordinate { get; set; }
         int Altitude { get; set; }
-        int Velocity { get; set; }
-        int Course { get; set; }
+        double Velocity { get; set; }
+        double Course { get; set; }
         DateTime Timestamp { get; set; }
     }
 }

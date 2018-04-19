@@ -8,7 +8,7 @@ namespace ATM
 {
     interface ITrackComparison
     {
-        List<Track> _compareList { get; }
-        List<Track> HandleTrack(List<Track> _oldTracks, List<Track> _newTracks, Track track);
+       
+        void HandleTrack(List<Track> _oldTracks, List<Track> _newTracks, Track track);
     }
 }
