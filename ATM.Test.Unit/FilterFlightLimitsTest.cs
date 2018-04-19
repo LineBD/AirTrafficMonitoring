@@ -21,16 +21,17 @@ namespace ATM.Test.Unit
        public void SetUp()
         {
             _uut = new FilterFlightLimits();
-            _trackparsing = new TrackParsing(trackob);
-            trackob = _trackparsing.CreateFlight(trackinfo);
-           
+            _trackparsing = Substitute.For<ITrackParsing>();
+
+
         }
         [Test]
 
-        [TestCase("AIM500;80000;80000;1;20161011221035800", false)]
+        [TestCase("AIM500;80000;80000;1;20161011221035800", true)]
         public void SetsState_FlightIsTrue_FilteredCorrect(string trackinfo, bool expectedState)
          
         {
+            trackob = _trackparsing.CreateFlight(trackinfo);
             Assert.That(_uut.Filtering(trackob), Is.EqualTo(expectedState));
         }
 

@@ -16,9 +16,10 @@ namespace ConsoleAppATM
             ITrackParsing factory = new TrackParsing(track);
             IFilterFlightLimits filterlimits = new FilterFlightLimits();
             IWrite writer = new WriteToConsole();
+            List<Track> trackobjectlist = new List<Track>();
             var myReciever = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
-            var myDisplay = new ControllerDisplay(myReciever,filterlimits,factory,writer);
+            var myDisplay = new ControllerDisplay(myReciever,filterlimits,factory,writer, trackobjectlist);
             Console.ReadKey();
         }
     }
