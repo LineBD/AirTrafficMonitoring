@@ -9,9 +9,9 @@ namespace ATM
     public class FilterFlightLimits : IFilterFlightLimits
     {   
         public bool State { get; set; }
-        private ConflictingTracks _ct;
+        private IConflictingTracks _ct;
 
-        public FilterFlightLimits(ConflictingTracks ct)
+        public FilterFlightLimits(IConflictingTracks ct)
         {
             _ct = ct;
         }

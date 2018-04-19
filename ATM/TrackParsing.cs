@@ -9,9 +9,9 @@ namespace ATM
 {
    public class TrackParsing: ITrackParsing
     {
-        private Track _track;
+        private ITrack _track;
 
-        public TrackParsing(Track track)
+        public TrackParsing(ITrack track)
         {
             _track = track;
         }

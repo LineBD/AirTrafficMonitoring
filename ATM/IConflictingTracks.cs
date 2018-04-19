@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-   public class FilterFlightDistance
+    public interface IConflictingTracks
     {
-        public void Filtering()
-        {
+        void UpdateTracks(List<ITrack> newTrack);
+        string ToString();
 
-            // Gemmes i en liste til sidst?
-        }
     }
 }

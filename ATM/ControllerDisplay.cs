@@ -41,7 +41,7 @@ namespace ATM
                 if (_filterFlightLimits.Filtering(trackObject) == true)
                 {
                     _trackObjectList.Add(trackObject);
-                    _write.WriteFlight(trackObject);
+                   // _write.WriteFlight(trackObject);
                 }
                                 
                 //Console.WriteLine(trackObjectList);
