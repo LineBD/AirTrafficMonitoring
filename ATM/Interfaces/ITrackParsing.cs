@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public interface ITransponderDataFactory
+    public interface ITrackParsing
     {
         Track CreateFlight(string trackInfo);
         string ToString();

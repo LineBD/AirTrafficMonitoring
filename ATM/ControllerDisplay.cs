@@ -12,15 +12,15 @@ namespace ATM
         private ITransponderReceiver _transponderreceiver;
         private IFilterFlightLimits _filterFlightLimits;
         private ITrack _track;
-        private ITransponderDataFactory _factory;
+        private ITrackParsing _trackparsing;
         private IWrite _write;
+        
 
-
-        public ControllerDisplay(ITransponderReceiver receiver, IFilterFlightLimits filterLimit, ITransponderDataFactory factory, IWrite write)
+        public ControllerDisplay(ITransponderReceiver receiver, IFilterFlightLimits filterLimit, ITrackParsing trackparsing, IWrite write)
         {
             _transponderreceiver = receiver;
             _filterFlightLimits = filterLimit;
-            _factory = factory;
+            _trackparsing = trackparsing;
             _write = write;
             _transponderreceiver.TransponderDataReady += MyReciever_transponderDataReady;
         }
@@ -36,7 +36,7 @@ namespace ATM
             foreach (var track in mylist)
             {
 
-                Track trackObject = _factory.CreateFlight(track);
+                Track trackObject = _trackparsing.CreateFlight(track);
                 if (_filterFlightLimits.Filtering(trackObject) == true)
                 {
                     trackObjectList.Add(trackObject);

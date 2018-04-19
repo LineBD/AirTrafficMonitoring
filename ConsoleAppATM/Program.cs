@@ -13,7 +13,7 @@ namespace ConsoleAppATM
         static void Main(string[] args)
         {
             Track track = new Track();
-            ITransponderDataFactory factory = new TransponderDataFactory(track);
+            ITrackParsing factory = new TrackParsing(track);
             IFilterFlightLimits filterlimits = new FilterFlightLimits();
             IWrite writer = new WriteToConsole();
             var myReciever = TransponderReceiverFactory.CreateTransponderDataReceiver();

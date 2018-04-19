@@ -21,7 +21,7 @@ namespace ATM.Test.Unit
        public void SetUp()
         {
             _uut = new FilterFlightLimits();
-            factory = new TransponderDataFactory(trackob);
+            factory = new TrackParsing(trackob);
             trackob = factory.CreateFlight(trackinfo);
            
         }

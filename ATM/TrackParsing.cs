@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-   public class TransponderDataFactory: ITransponderDataFactory
+   public class TrackParsing: ITrackParsing
     {
         private Track _track;
 
-        public TransponderDataFactory(Track track)
+        public TrackParsing(Track track)
         {
             _track = track;
         }
