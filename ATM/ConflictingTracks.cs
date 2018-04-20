@@ -26,6 +26,7 @@ namespace ATM
         }
         public void UpdateTracks(List<ITrack> newTracks, List<ITrack> currentTracks)
         {
+
             foreach (var newtracks in newTracks)
             {
                 foreach (var oldtracks in currentTracks)
@@ -38,14 +39,13 @@ namespace ATM
                 }
             }
             currentTracks = newTracks;
-            
+           
            
             //Udskriv!
         }
-        public override string ToString()
-        {
-            return "\nVelocity: " +_velocity + "\nCourse: "+_course;
-
-        }
+        //public override string ToString()
+        //{ 
+        //      return  "\nVelocity: " + currentTracks[i].Velocity + "\nCourse: " + currentTracks[0].Course;
+        //    }
     }
 }

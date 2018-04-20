@@ -21,7 +21,7 @@ namespace ATM
         {
             return "Tag: " + Tag + "\nX Coordinate: " + XCoordinate + "\nY Coordinate: " +
                    YCoordinate + "\nAltitude: " + Altitude +"\nTimestamp: " +
-                   Timestamp + "\n";
+                   Timestamp + "\n" + "Hastighed: "+Velocity+"\n"+"Course: " + Course ;
         }
 
 
