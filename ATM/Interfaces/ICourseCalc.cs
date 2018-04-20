@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface ICourseCalc
+    public interface ICourseCalc
     {
-        double CalculateCourse(ITrack track1, ITrack track2);
+        double CalculateCourse(List<ITrack> track, List<ITrack> traack);
     }
 }

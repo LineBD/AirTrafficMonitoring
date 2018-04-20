@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public interface IConflictingTracks
+    public interface IConflictObserver
     {
-        void UpdateTracks(List<ITrack> newTrack, List<ITrack> oldTrack);
-        string ToString();
-
+        void Update();
     }
 }

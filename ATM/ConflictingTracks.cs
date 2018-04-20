@@ -11,39 +11,40 @@ namespace ATM
 
         //Skal trackinfo i gennem trackparsing og controller 2 x - så vi får returneret to lister vi kan sammenligne?? HVORDAN gør vi det
        
-        private Track _Track;
-        private List<ITrack> _currenttracks;
-        private List<ITrack> _newtrack;
+        
+        private List<ITrack> currentTracks;
         private VelocityCalc _velocity;
         private CourseCalc _course;
 
         public ConflictingTracks()
         {
-            _currenttracks = new List<ITrack>();
+            currentTracks = new List<ITrack>();
             
             _velocity = new VelocityCalc();
             _course = new CourseCalc();
            
         }
-        public void UpdateTracks(List<ITrack> newTrack)
+        public void UpdateTracks(List<ITrack> newTracks, List<ITrack> currentTracks)
         {
-            foreach (var newtracks in newTrack)
+            foreach (var newtracks in newTracks)
             {
-                foreach (var oldtracks in _currenttracks)
+                foreach (var oldtracks in currentTracks)
                 {
                     if (newtracks.Tag == oldtracks.Tag)
                     {
-                        newtracks.Velocity = _velocity.CalculateVelocity(newtracks, oldtracks);
-                        newtracks.Course = _course.CalculateCourse(newtracks, oldtracks);   
+                        newtracks.Velocity = _velocity.CalculateVelocity(currentTracks,newTracks);
+                        newtracks.Course = _course.CalculateCourse(currentTracks,newTracks);   
                     }
                 }
             }
-            _currenttracks = newTrack;
+            currentTracks = newTracks;
+            
+           
             //Udskriv!
         }
         public override string ToString()
         {
-            return "Hastighed:" + _velocity + "\n Kurs:" + _course;
+            return "\nVelocity: " +_velocity + "\nCourse: "+_course;
 
         }
     }

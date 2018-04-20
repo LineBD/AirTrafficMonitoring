@@ -20,7 +20,7 @@ namespace ATM
         public override string ToString()
         {
             return "Tag: " + Tag + "\nX Coordinate: " + XCoordinate + "\nY Coordinate: " +
-                   YCoordinate + "\nAltitude: " + Altitude + "\nTimestamp: " +
+                   YCoordinate + "\nAltitude: " + Altitude +"\nTimestamp: " +
                    Timestamp + "\n";
         }
 

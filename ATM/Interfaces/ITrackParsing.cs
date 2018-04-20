@@ -8,7 +8,7 @@ namespace ATM
 {
     public interface ITrackParsing
     {
-        Track CreateFlight(string trackInfo);
+        ITrack CreateFlight(string trackInfo);
         string ToString();
     }
 }

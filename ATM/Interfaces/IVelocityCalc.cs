@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface IVelocityCalc
+    public interface IVelocityCalc
     {
-        double CalculateVelocity(ITrack track1, ITrack track2);
+       double CalculateVelocity(List<ITrack> track1, List<ITrack> track2);
     }
 }

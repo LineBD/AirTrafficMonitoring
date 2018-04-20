@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class CheckCollision
+    public class CheckCollision : ConflictSubject
     {
-        public List<Track> ConflictingFlights { get; set; }
-        public void TrackComparrison(List<Track> trackliste)
+         public List<ITrack> ConflictingFlights { get; set; }
+        public void TrackComparison(List<ITrack> trackliste)
         {
             double verticalDistance;
             double horisontalDistance;
@@ -36,15 +36,17 @@ namespace ATM
 
                             if (horisontalDistance < 5000)
                             {
-                                ConflictingFlights = new List<Track>();
+                                ConflictingFlights = new List<ITrack>();
                                 ConflictingFlights.Add(trackliste[i]);
                                 ConflictingFlights.Add(trackliste[j]);
-                                //Notify();
+                                Notify();
                             }
+                            
                         }
                     }
                 }
             }
+            
         }
     }
 }

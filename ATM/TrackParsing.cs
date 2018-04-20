@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-   public class TrackParsing: ITrackParsing
+    public class TrackParsing : ITrackParsing
     {
         private ITrack _track;
 
@@ -15,10 +15,10 @@ namespace ATM
         {
             _track = track;
         }
-        public Track CreateFlight(string trackInfo)
+        public ITrack CreateFlight(string trackInfo)
         {
-            
-            Track track = new Track();
+
+            ITrack track = new Track();
 
             var info = trackInfo.Split(';');
             track.Tag = info[0];
@@ -33,6 +33,6 @@ namespace ATM
             return track;
         }
 
-        }
+    }
     }
 

@@ -9,19 +9,28 @@ namespace ATM
 {
     class VelocityCalc: IVelocityCalc
     {
-        private List<Track> _tracklist = new List<Track>();
-        private List<ITrack> _currentTracks = new List<ITrack>();
-        private List<ITrack> _newTracks = new List<ITrack>();
-
-
-        public double CalculateVelocity(ITrack track1, ITrack track2)
+        private double velocity;
+        public double CalculateVelocity(List<ITrack> currentTracks, List<ITrack> newTracks)
         {
-            TimeSpan TimeDifference = track2.Timestamp.Subtract(track1.Timestamp);
-            var Distance = Math.Sqrt(Math.Pow((track2.XCoordinate - track1.XCoordinate), 2) + Math.Pow((track2.YCoordinate - track1.YCoordinate), 2));
-            var Velocity = Distance / Math.Abs(TimeDifference.TotalSeconds);//https://stackoverflow.com/questions/845379/difference-between-two-datetimes-c
-            return Velocity;
-        }
+            List<ITrack> velocityList = new List<ITrack>();
+            foreach (var track in newTracks)
+            {
+                for (int i = 0; i < currentTracks.Count; i++)
+                {
+                    if(track.Tag == currentTracks[i].Tag)
+                    {
+                        TimeSpan TimeDifference = track.Timestamp - currentTracks[i].Timestamp;
+                        var Distance = Math.Sqrt(Math.Pow((track.XCoordinate - currentTracks[i].XCoordinate), 2) + Math.Pow((track.YCoordinate - currentTracks[i].YCoordinate), 2));
+                        velocity = Distance / Math.Abs(TimeDifference.TotalSeconds);//https://stackoverflow.com/questions/845379/difference-between-two-datetimes-c
 
+                        track.Velocity = velocity;
+                    }
+                }
+                velocityList.Add(track);
+
+            }
+            return velocity;
+        }
         //_tracklist.Add(track);
 
         //if (_tracklist.Count == 2 && track.Tag[1] == track.Tag[2])
@@ -56,6 +65,16 @@ namespace ATM
 
         //    _tracklist[1].Velocity = Convert.ToInt32(Math.Sqrt(Math.Pow(HorizontalVelocity, 2) + Math.Pow(VerticalVelocity, 2)));
 
+        //}
+        //private List<Track> _tracklist = new List<ITrack>();
+        //private List<ITrack> _currentTracks = new List<ITrack>();
+        //private List<ITrack> _newTracks = new List<ITrack>();
+        //public double CalculateVelocity(ITrack track1, ITrack track2)
+        //{
+        //    TimeSpan TimeDifference = track1.Timestamp.Subtract(track2.Timestamp);
+        //    var Distance = Math.Sqrt(Math.Pow((track1.XCoordinate - track2.XCoordinate), 2) + Math.Pow((track1.YCoordinate - track2.YCoordinate), 2));
+        //    var Velocity = Distance / Math.Abs(TimeDifference.TotalSeconds);//https://stackoverflow.com/questions/845379/difference-between-two-datetimes-c
+        //    return Velocity;
         //}
 
     }
