@@ -8,6 +8,6 @@ namespace ATM
 {
     public interface IWrite
     {
-        void WriteFlight(ITrack track, IConflictingTracks conflictingtrack);
+        void WriteFlight(List<ITrack> trackList);
     }
 }

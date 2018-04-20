@@ -28,7 +28,7 @@ namespace ATM
                         double altitude1 = trackliste[i].Altitude;
                         double altitude2 = trackliste[j].Altitude;
 
-                        verticalDistance = altitude2 - altitude1;
+                        verticalDistance = altitude1 - altitude2;
 
                         if (verticalDistance<300)
                         {

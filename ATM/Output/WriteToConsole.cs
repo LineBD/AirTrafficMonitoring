@@ -8,10 +8,21 @@ namespace ATM
 {
     public class WriteToConsole : IWrite
     {
-        public void WriteFlight(ITrack track , IConflictingTracks conflictingtrack)
+        public void WriteFlight(List<ITrack> trackList)
         {
-            Console.WriteLine(track.ToString());
-            Console.WriteLine(conflictingtrack.ToString());
+            if(trackList.Count  != 0)
+            {
+                Console.WriteLine("- - - - - - ");
+                foreach (var track in trackList)
+                {
+                    Console.WriteLine(
+                        "Tag: " + track.Tag + "\nX Coordinate: " + track.XCoordinate + "\nY Coordinate: " +
+                   track.YCoordinate + "\nAltitude: " + track.Altitude + "\nTimestamp: " +
+                   track.Timestamp + "\n" + "Hastighed: " + track.Velocity + "\n" + "Course: " + track.Course);
+                }
+            }
+                    
+            
         }
     }
 

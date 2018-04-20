@@ -11,15 +11,16 @@ namespace ATM
     {
         private ITransponderReceiver _receiver;
         private IFilterFlightLimits filter;
-       // private List<ITrack> filteredTracks;
+        // private List<ITrack> filteredTracks;
         private IWrite writer;
         private CheckCollision compare;
         private ITrackParsing parseTracks;
         private IConflictingTracks conflict;
-     
-        
+        private List<ITrack> filteredTracks = new List<ITrack>();
 
-        public Forsøg(ITransponderReceiver transponderReceiver, IFilterFlightLimits _filter,  IWrite _writer, CheckCollision _compare, IConflictingTracks _conflict, ITrackParsing _parseTracks)
+
+
+        public Forsøg(ITransponderReceiver transponderReceiver, IFilterFlightLimits _filter, IWrite _writer, CheckCollision _compare, IConflictingTracks _conflict, ITrackParsing _parseTracks)
         {
             _receiver = transponderReceiver;
             filter = _filter;
@@ -34,9 +35,8 @@ namespace ATM
         private void MyReceiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
             var myList = e.TransponderData;
-            List<ITrack> currentTracks = new List<ITrack>();
-            List<ITrack> filteredTracks = new List<ITrack>();
-            List<ITrack> comparedTracks = new List<ITrack>();
+            // List<ITrack> currentTracks = new List<ITrack>();            
+            filteredTracks = new List<ITrack>();
 
             foreach (var track in myList)
             {
@@ -50,34 +50,35 @@ namespace ATM
                     //{
                     //    writer.WriteFlight(trackObject);
                     //}
-                   
+
                     // Udregner hastighed og kurs, samt laver en liste med disse objekter. Har dermed en liste med filtrerede objekter med dertilhørende hastighed og kurs.
-                    conflict.UpdateTracks(filteredTracks, currentTracks);
-                    foreach (var trackwithCourseAndVelocity in filteredTracks)
-                {
-                    comparedTracks.Add(trackwithCourseAndVelocity);
-                        if (comparedTracks.Count > 1)
-                        {
-                            compare.TrackComparison(comparedTracks);
-                            writer.WriteFlight(trackwithCourseAndVelocity, conflict);
-                        }
+                    //    foreach (var trackwithCourseAndVelocity in filteredTracks)
+                    //{
+                    //    comparedTracks.Add(trackwithCourseAndVelocity);
+                    //        if (comparedTracks.Count > 1)
+                    //        {
+                    //            compare.TrackComparison(comparedTracks);
+                    //            writer.WriteFlight(comparedTracks);
+                    //        }
 
-                    }
+                    //    }
 
-                //udskriv - velocity og kurs udskrives ikke! men det andre gør. 
-                
+                    //udskriv - velocity og kurs udskrives ikke! men det andre gør. 
 
-                //if (comparedTracks.Count > 1)
-                //{
-                //    compare.TrackComparison(comparedTracks);
-                //    writer.WriteFlight(t,conflict);
-                //}
 
+                    //if (comparedTracks.Count > 1)
+                    //{
+                    //    compare.TrackComparison(comparedTracks);
+                    //    writer.WriteFlight(t,conflict);
+                    //}
+
+
+                }
+               
 
             }
-        }
 
-            
+            conflict.UpdateTracks(filteredTracks);
         }
     }
 }

@@ -8,6 +8,6 @@ namespace ATM
 {
     public interface IVelocityCalc
     {
-       double CalculateVelocity(List<ITrack> track1, List<ITrack> track2);
+       void CalculateVelocity(List<ITrack> track1, List<ITrack> track2);
     }
 }

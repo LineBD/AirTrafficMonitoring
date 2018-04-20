@@ -34,7 +34,12 @@ namespace ATM
             }
             return CourseDegrees;
         }
-//HEAD
+
+        void ICourseCalc.CalculateCourse(List<ITrack> currentTracks, List<ITrack> oldtracks)
+        {
+            throw new NotImplementedException();
+        }
+        //HEAD
     }
 }
 //public double CalculateCourses(List<ITrack> _tracklist)

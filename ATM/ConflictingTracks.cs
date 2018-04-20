@@ -6,43 +6,107 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public class ConflictingTracks: IConflictingTracks
+    public class ConflictingTracks : IConflictingTracks
     {
 
         //Skal trackinfo i gennem trackparsing og controller 2 x - så vi får returneret to lister vi kan sammenligne?? HVORDAN gør vi det
-       
-        
+
+
         private List<ITrack> currentTracks;
+        private List<ITrack> oldTracks;
         private VelocityCalc _velocity;
         private CourseCalculator _course;
+        private IWrite _write;
 
         public ConflictingTracks()
         {
             currentTracks = new List<ITrack>();
-            
+            oldTracks = new List<ITrack>();
             _velocity = new VelocityCalc();
             _course = new CourseCalculator();
-           
+            _write = new WriteToConsole();
+
         }
-        public void UpdateTracks(List<ITrack> newTracks, List<ITrack> currentTracks)
+        public void UpdateTracks(List<ITrack> newTracks)
         {
 
             foreach (var newtracks in newTracks)
             {
-                foreach (var oldtracks in currentTracks)
+                if (!currentTracks.Exists(x => x.Tag == newtracks.Tag))
                 {
-                    if (newtracks.Tag == oldtracks.Tag)
+                    currentTracks.Add(newtracks);
+                }
+
+                else
+                {
+                    if (!oldTracks.Exists(x => x.Tag == newtracks.Tag))
                     {
-                        newtracks.Velocity = _velocity.CalculateVelocity(currentTracks,newTracks);
-                        newtracks.Course = _course.CalculateCourse(currentTracks,newTracks);   
+                        var track = currentTracks.Find(x => x.Tag == newtracks.Tag);
+                        var index = currentTracks.IndexOf(track);
+                        oldTracks.Add(track);
+                        currentTracks[index] = newtracks;
+
+                    }
+                    else
+                    {
+                        var oldtrack = oldTracks.Find(x => x.Tag == newtracks.Tag);
+                        var indexInOldTrack = oldTracks.IndexOf(oldtrack);
+
+
+                        var track = currentTracks.Find(x => x.Tag == newtracks.Tag);
+                        var index = currentTracks.IndexOf(track);
+
+
+                        oldTracks[indexInOldTrack] = track;
+                        currentTracks[index] = newtracks;
                     }
                 }
             }
-            currentTracks = newTracks;
-           
-           
+            foreach (var oldtrack in oldTracks)
+            {
+                foreach (var currenttrack in currentTracks)
+                {
+                    if (oldtrack.Tag == currenttrack.Tag)
+                    {
+                        _velocity.CalculateVelocity(currentTracks, newTracks);
+                        _course.CalculateCourse(currentTracks, newTracks);
+                    }
+                }
+
+      
+                
+
+
+
+
+                //}
+                //currentTracks = newTracks;
+
+            }
+
+            //Konflikthåndtering (Kun for currenttracks)
+
+            // udskrivning
+            _write.WriteFlight(currentTracks);
             //Udskriv!
         }
+
+        //private List<ITrack> oldTracks;
+        //    public void UpdateTracks(List<ITrack> newTrack)
+        //    {
+        //        for (int i = 0; i < newTrack.Count; i++)
+        //        {
+        //            for (int j = 0; j < oldTracks.Count; j++)
+        //            {
+        //                if(newTrack[i].Tag== oldTracks[j].Tag)
+        //                {
+        //                    _velocity.CalculateVelocity(oldTracks, newTrack);
+        //                    _course.CalculateCourse(oldTracks, newTrack);
+        //                }
+        //            }
+        //            oldTracks = newTrack;
+        //        }
+        //    }
         //public override string ToString()
         //{ 
         //      return  "\nVelocity: " + currentTracks[i].Velocity + "\nCourse: " + currentTracks[0].Course;

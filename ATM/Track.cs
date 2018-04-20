@@ -17,12 +17,12 @@ namespace ATM
         public double Course { get; set; }
         public DateTime Timestamp { get; set; }
 
-        public override string ToString()
-        {
-            return "Tag: " + Tag + "\nX Coordinate: " + XCoordinate + "\nY Coordinate: " +
-                   YCoordinate + "\nAltitude: " + Altitude +"\nTimestamp: " +
-                   Timestamp + "\n" + "Hastighed: "+Velocity+"\n"+"Course: " + Course ;
-        }
+        //public override string ToString()
+        //{
+        //    return "Tag: " + Tag + "\nX Coordinate: " + XCoordinate + "\nY Coordinate: " +
+        //           YCoordinate + "\nAltitude: " + Altitude +"\nTimestamp: " +
+        //           Timestamp + "\n" + "Hastighed: "+Velocity+"\n"+"Course: " + Course ;
+        //}
 
 
     }
