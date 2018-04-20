@@ -14,14 +14,14 @@ namespace ATM
         
         private List<ITrack> currentTracks;
         private VelocityCalc _velocity;
-        private CourseCalc _course;
+        private CourseCalculator _course;
 
         public ConflictingTracks()
         {
             currentTracks = new List<ITrack>();
             
             _velocity = new VelocityCalc();
-            _course = new CourseCalc();
+            _course = new CourseCalculator();
            
         }
         public void UpdateTracks(List<ITrack> newTracks, List<ITrack> currentTracks)
