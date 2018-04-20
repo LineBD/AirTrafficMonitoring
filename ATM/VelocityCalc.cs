@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class VelocityCalc: IVelocityCalc
+    public class VelocityCalc: IVelocityCalc
     {
         private double velocity;
         public double CalculateVelocity(List<ITrack> currentTracks, List<ITrack> newTracks)
