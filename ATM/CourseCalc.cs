@@ -34,7 +34,7 @@ namespace ATM
             }
             return CourseDegrees;
         }
-HEAD
+//HEAD
     }
 }
 //public double CalculateCourses(List<ITrack> _tracklist)
@@ -43,7 +43,7 @@ HEAD
 //    int x2coordinate = _tracklist[2].XCoordinate;
 //    int y1coordinate = _tracklist[1].YCoordinate;
 //    int y2coordinate = _tracklist[2].YCoordinate;
-=======
+//=======
         //private List<ITrack> _tracklist;
         //public double CalculateCourses(List<ITrack> _tracklist)
         //{
@@ -51,7 +51,7 @@ HEAD
         //    int x2coordinate = _tracklist[2].XCoordinate;
         //    int y1coordinate = _tracklist[1].YCoordinate;
         //    int y2coordinate = _tracklist[2].YCoordinate;
->>>>>>> 2c2348326e93ddbc316ae1c497db22b737a35a3c
+//>>>>>>> 2c2348326e93ddbc316ae1c497db22b737a35a3c
 
 //    int xCoordinate = x2coordinate - x1coordinate;
 //    int yCoordinate = y2coordinate - y1coordinate;

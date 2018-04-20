@@ -21,7 +21,7 @@ namespace ATM.Test.Unit
         [SetUp]
        public void SetUp()
         {
-            _uut = new FilterFlightLimits(_ct);
+            _uut = new FilterFlightLimits();
             _trackparsing = Substitute.For<ITrackParsing>();
 
 

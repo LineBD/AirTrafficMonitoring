@@ -57,7 +57,7 @@
   <ItemGroup>
     <Compile Include="ControllerDisplayTest.cs" />
     <Compile Include="FilterFlightLimitsTest.cs" />
-    <Compile Include="TransponderDataFactoryTest.cs" />
+    <Compile Include="TrackParsingTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
