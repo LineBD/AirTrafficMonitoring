@@ -11,7 +11,8 @@ namespace ATM.Test.Unit
     class CourseCalcTest
     {
         private ICourseCalc _uut;
-        private List<ITrack> _flightList;
+        private List<ITrack> _newTracks;
+        private List<ITrack> _oldTracks;
         private ITrack _flight1;
         private ITrack _flight2;
 
@@ -19,14 +20,14 @@ namespace ATM.Test.Unit
         public void setup()
         {
             _uut = new CourseCalc();
-            
+
 
             _flight1 = new Track
             {
                 Tag = "HEJMEDDIG",
                 XCoordinate = 12000,
                 YCoordinate = 12000,
-                
+
             };
 
             _flight2 = new Track
@@ -37,16 +38,23 @@ namespace ATM.Test.Unit
 
             };
 
-            _flightList = new List<ITrack>()
+            _newTracks = new List<ITrack>()
             {
-                _flight1,
                 _flight2
-            }
+            };
 
-            [Test];
+            _oldTracks = new List<ITrack>
+            {
+                _flight1
+            };
+        }
+
+
+        [Test]
             public void CourseCalc_Course_Correct()
             {
-
+                _uut.CalculateCourse(_oldTracks,_newTracks);
+                Assert.That(_uut.courseDegrees,Is.EqualTo());
             }
 
         }

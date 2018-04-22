@@ -63,7 +63,7 @@ namespace ATM.Test.Unit
 
             _uut.CalculateVelocity(_oldtTracks, _newTracks);
             
-            //Assert.That(_uut.Returns(),Is.EqualTo(31.623));
+            Assert.That(_uut.Velocity_,Is.EqualTo(31.623));
 
 
         }

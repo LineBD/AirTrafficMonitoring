@@ -9,7 +9,7 @@ namespace ATM
 {
    public class VelocityCalc : IVelocityCalc
     {
-        private double velocity;
+        public double Velocity_ { get; set; }
         public void CalculateVelocity(List<ITrack> currentTracks, List<ITrack> newTracks)
         {
             foreach (var track in newTracks)
@@ -21,9 +21,9 @@ namespace ATM
                     {
                         TimeSpan TimeDifference = track.Timestamp - currentTracks[i].Timestamp;
                         var Distance = Math.Sqrt(Math.Pow((track.XCoordinate - currentTracks[i].XCoordinate), 2) + Math.Pow((track.YCoordinate - currentTracks[i].YCoordinate), 2));
-                        velocity = Distance / Math.Abs(TimeDifference.TotalMilliseconds/1000);//https://stackoverflow.com/questions/845379/difference-between-two-datetimes-c
+                        Velocity_ = Distance / Math.Abs(TimeDifference.TotalMilliseconds/1000);//https://stackoverflow.com/questions/845379/difference-between-two-datetimes-c
 
-                        track.Velocity = velocity;
+                        track.Velocity = Velocity_;
                     }
                 }
 
