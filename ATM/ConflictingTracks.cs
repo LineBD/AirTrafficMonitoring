@@ -15,7 +15,7 @@ namespace ATM
         private List<ITrack> currentTracks;
         private List<ITrack> oldTracks;
         private VelocityCalc _velocity;
-        private CourseCalculator _course;
+        private CourseCalc _course;
         private IWrite _write;
 
         public ConflictingTracks()
@@ -23,7 +23,7 @@ namespace ATM
             currentTracks = new List<ITrack>();
             oldTracks = new List<ITrack>();
             _velocity = new VelocityCalc();
-            _course = new CourseCalculator();
+            _course = new CourseCalc();
             _write = new WriteToConsole();
 
         }
