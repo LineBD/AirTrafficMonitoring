@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConflictingTracks.cs" />
-    <Compile Include="CourseCalculator.cs" />
     <Compile Include="ControllerDisplay.cs" />
     <Compile Include="Interfaces\ILog.cs" />
     <Compile Include="Output\LogToFile.cs" />

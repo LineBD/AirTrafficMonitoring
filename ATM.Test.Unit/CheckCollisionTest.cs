@@ -17,21 +17,22 @@ namespace ATM.Test.Unit
         {
             uut = new CheckCollision();
         }
-        [TestCase(60000, 65000, 70000, 75000, 7000, 7300, 0)]
-        //[TestCase(60000, 65000, 7300, 6999, 0)]
-        //[TestCase(60000, 65000, 7300, 7000, 0)]
-        //[TestCase(60000, 65000, 7300, 7000, 0)]
-        //[TestCase(60000, 65000, 7300, 7000, 0)]
-        public void CheckCollision_CompareTracks_DetectCollison(int xcoord1, int xcoord2, int ycoord1, int ycoord2, int verticaldistance1, int verticaldistance2, int count)
+     
+        [TestCase(60000, 65001, 7300, 6999, 0)]
+        [TestCase(60000, 65000, 7300, 6999, 0)]
+        [TestCase(60000, 65001, 7300, 7000, 0)]
+        [TestCase(60000, 65000, 7300, 7000, 2)]
+
+        public void CheckCollision_CompareTracks_DetectCollision(int xcoord1, int xcoord2, int verticaldistance1, int verticaldistance2, int count)
         {
             ITrack track1 = new Track();
             track1.XCoordinate = xcoord1;
-            track1.YCoordinate = ycoord1;
+            track1.YCoordinate = 60000;
             track1.Altitude = verticaldistance1;
 
             ITrack track2 = new Track();
             track2.XCoordinate = xcoord2;
-            track2.YCoordinate = ycoord2;
+            track2.YCoordinate = 60000;
             track2.Altitude = verticaldistance2;
 
             List<ITrack> listOfTracks = new List<ITrack>();
@@ -41,6 +42,8 @@ namespace ATM.Test.Unit
             uut.TrackComparison(listOfTracks);
             Assert.That(uut.ConflictingFlights.Count, Is.EqualTo(count));
         }
-    } }
-    
+
+    }
 }
+    
+
