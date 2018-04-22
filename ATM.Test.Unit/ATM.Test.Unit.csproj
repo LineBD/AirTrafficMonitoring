@@ -58,6 +58,7 @@
     <Compile Include="CheckCollisionTest.cs" />
     <Compile Include="ControllerDisplayTest.cs" />
     <Compile Include="CourseCalcTest.cs" />
+    <Compile Include="DetectConflictTest.cs" />
     <Compile Include="FilterFlightLimitsTest.cs" />
     <Compile Include="TrackParsingTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,7 +8,7 @@ namespace ATM
 {
     public class WriteToConsole : IWrite
     {
-        public void WriteFlight(List<ITrack> trackList)
+        public void Write(List<ITrack> trackList)
         {
             if(trackList.Count  != 0)
             {

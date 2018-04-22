@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface ILog
+    public interface ILog
     {
-        void Log(List<ITrack> tracks);
+        void Write(List<ITrack> tracks);
     }
 }

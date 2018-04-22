@@ -19,35 +19,31 @@ namespace ATM.Test.Unit
         public void setup()
         {
             _uut = new CourseCalc();
-            
 
-            _flight1 = new Track
-            {
-                Tag = "HEJMEDDIG",
-                XCoordinate = 12000,
-                YCoordinate = 12000,
-                
-            };
+        }
+        [Test]
+        public void CalculateCourse_Course_IsCorrect()
+        {
 
-            _flight2 = new Track
-            {
-                Tag = "HALLIHALLO",
-                XCoordinate = 13000,
-                YCoordinate = 13000,
+            ITrack track1 = new Track();
+            track1.Tag = "KLA";
+            track1.XCoordinate = 12000;
+            track1.YCoordinate = 12000;
 
-            };
+            ITrack track2 = new Track();
+            track2.Tag = "KLA";
+            track2.XCoordinate = 12000;
+            track2.YCoordinate = 12001;
 
-            _flightList = new List<ITrack>()
-            {
-                _flight1,
-                _flight2
-            }
+            List<ITrack> currentList = new List<ITrack>();
+            currentList.Add(track1);
+            List<ITrack> newList = new List<ITrack>();
+            newList.Add(track2);
 
-            [Test];
-            public void CourseCalc_Course_Correct()
-            {
+            List<ITrack> CourseList = _uut.CalculateCourse(currentList, newList); //hvorfor???????????
+            Assert.That(CourseList[0].Course, Is.EqualTo(90));
 
-            }
+         
 
         }
     }
