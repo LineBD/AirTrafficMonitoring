@@ -13,7 +13,8 @@ namespace ATM.Test.Unit
     class VelocityCalcTest
     {
         private IVelocityCalc _uut;
-        private List<ITrack> _flightList;
+        private List<ITrack> _flightList1;
+        private List<ITrack> _flightList2;
         private Track _flight1;
         private Track _flight2;
 
@@ -21,10 +22,10 @@ namespace ATM.Test.Unit
 
         public void SetUp()
         {
-            _uut=new VelocityCalc();
+            _uut = new VelocityCalc();
 
-            DateTime dateTime1 = new DateTime(2018, 06, 10, 25, 18, 18);
-            DateTime dateTime2 = new DateTime(2018, 06, 10, 25, 18, 20);
+            DateTime dateTime1 = new DateTime(2018, 06, 10, 10, 18, 18);
+            DateTime dateTime2 = new DateTime(2018, 06, 10, 10, 18, 20);
 
             _flight1 = new Track
             {
@@ -44,18 +45,25 @@ namespace ATM.Test.Unit
                 Timestamp = dateTime2
             };
 
-            _flightList = new List<ITrack>()
+            _flightList1 = new List<ITrack>
             {
-                _flight1,
+                _flight1
+            };
+
+            _flightList2 = new List<ITrack>
+            {
                 _flight2
             };
+
         }
 
         [Test]
         public void VelocityCalc_CorrectVelocity_VelocityIsEqualTo31point623()
         {
-            _uut.CalculateVelocity(_flightList);
-            Assert.That((_flightList[1].Velocity),Is.EqualTo(31.623));
+
+            _uut.CalculateVelocity(_flightList1, _flightList2);
+            Assert.AreEqual(31.623, _flightList1[0].Velocity);
+
         }
 
     }
