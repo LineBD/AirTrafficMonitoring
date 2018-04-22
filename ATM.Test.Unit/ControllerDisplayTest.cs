@@ -24,11 +24,11 @@ namespace ATM.Test.Unit
         public void Setup()
         {
             _filter = Substitute.For<IFilterFlightLimits>();
-            _receiver = Substitute.For<ITransponderReceiver>();
+            _transponderReceiver = Substitute.For<ITransponderReceiver>();
             _trackparsing = Substitute.For<ITrackParsing>();
             _writer = Substitute.For<IWrite>();
             _trackObjectList = Substitute.For<List<ITrack>>();
-            _uut = new ControllerDisplay(_receiver, _filter, _trackparsing, _writer, _trackObjectList);
+            _uut = new ControllerDisplay(_transponderReceiver, _filter, _writer, _compare, _conflict, _parseTracks);
             _track = Substitute.For<ITrack>();
 
             var track = "AIM500;40000;50000;60000;20161011221035800";
