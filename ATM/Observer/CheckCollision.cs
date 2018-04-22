@@ -36,11 +36,11 @@ namespace ATM
 
                         verticalDistance = altitude1 - altitude2;
 
-                        if (verticalDistance < 17000)
+                        if (verticalDistance <= 300)
                         {
                             horisontalDistance = Math.Sqrt(Math.Pow((X2 - X1), 2) + Math.Pow((Y2- Y1), 2));
 
-                            if (horisontalDistance < 80000)
+                            if (horisontalDistance <= 5000)
                             {
                                 ConflictingFlights.Add(trackliste[i]);
                                 ConflictingFlights.Add(trackliste[j]);
