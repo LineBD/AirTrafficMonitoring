@@ -8,6 +8,6 @@ namespace ATM
 {
     public interface ICourseCalc
     {
-        void CalculateCourse(List<ITrack> currentTracks, List<ITrack> oldtracks);
+        void CalculateCourse(List<ITrack> currentTracks, List<ITrack> newTracks);
     }
 }

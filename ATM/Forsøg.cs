@@ -9,7 +9,7 @@ namespace ATM
 {
     public class Forsøg
     {
-        private ITransponderReceiver _receiver;
+       // private ITransponderReceiver _receiver;
         private IFilterFlightLimits filter;
         // private List<ITrack> filteredTracks;
         private IWrite writer;
@@ -22,14 +22,12 @@ namespace ATM
 
         public Forsøg(ITransponderReceiver transponderReceiver, IFilterFlightLimits _filter, IWrite _writer, CheckCollision _compare, IConflictingTracks _conflict, ITrackParsing _parseTracks)
         {
-            _receiver = transponderReceiver;
-            filter = _filter;
+            transponderReceiver.TransponderDataReady += MyReceiver_TransponderDataReady;
             writer = _writer;
+            filter = _filter;
             compare = _compare;
             parseTracks = _parseTracks;
             conflict = _conflict;
-            _receiver.TransponderDataReady += MyReceiver_TransponderDataReady;
-
         }
 
         private void MyReceiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
@@ -45,40 +43,31 @@ namespace ATM
                 {
                     // Tilføjer filtrerede track-objekter til filtreret-liste
                     filteredTracks.Add(trackObject);
-                    // Test for om den udskriver de filtrerede tracks - det gør den!!
-                    //if (filteredTracks.Count >= 1)
-                    //{
-                    //    writer.WriteFlight(trackObject);
-                    //}
-
-                    // Udregner hastighed og kurs, samt laver en liste med disse objekter. Har dermed en liste med filtrerede objekter med dertilhørende hastighed og kurs.
-                    //    foreach (var trackwithCourseAndVelocity in filteredTracks)
-                    //{
-                    //    comparedTracks.Add(trackwithCourseAndVelocity);
-                    //        if (comparedTracks.Count > 1)
-                    //        {
-                    //            compare.TrackComparison(comparedTracks);
-                    //            writer.WriteFlight(comparedTracks);
-                    //        }
-
-                    //    }
-
-                    //udskriv - velocity og kurs udskrives ikke! men det andre gør. 
-
-
-                    //if (comparedTracks.Count > 1)
-                    //{
-                    //    compare.TrackComparison(comparedTracks);
-                    //    writer.WriteFlight(t,conflict);
-                    //}
-
-
                 }
-               
-
             }
 
             conflict.UpdateTracks(filteredTracks);
+            // Udregner hastighed og kurs, samt laver en liste med disse objekter. Har dermed en liste med filtrerede objekter med dertilhørende hastighed og kurs.
+            //   
+            //foreach (var trackwithCourseAndVelocity in filteredTracks)
+            //{
+            //    comparedTracks.Add(trackwithCourseAndVelocity);
+            //        if (comparedTracks.Count > 1)
+            //        {
+            //            compare.TrackComparison(comparedTracks);
+            //            writer.WriteFlight(comparedTracks);
+            //        }
+
+            //    }
+
+            //udskriv - velocity og kurs udskrives ikke! men det andre gør. 
+
+
+            //if (comparedTracks.Count > 1)
+            //{
+            //    compare.TrackComparison(comparedTracks);
+            //    writer.WriteFlight(t,conflict);
+            //}
         }
     }
 }

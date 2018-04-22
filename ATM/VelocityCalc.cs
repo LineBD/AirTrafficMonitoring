@@ -12,21 +12,20 @@ namespace ATM
         private double velocity;
         public void CalculateVelocity(List<ITrack> currentTracks, List<ITrack> newTracks)
         {
-            //List<ITrack> velocityList = new List<ITrack>();
             foreach (var track in newTracks)
             {
-                track.Velocity = 100;
-                //for (int i = 0; i < currentTracks.Count; i++)
-                //{
-                //    if (track.Tag == currentTracks[i].Tag)
-                //    {
-                //        TimeSpan TimeDifference = track.Timestamp - currentTracks[i].Timestamp;
-                //        var Distance = Math.Sqrt(Math.Pow((track.XCoordinate - currentTracks[i].XCoordinate), 2) + Math.Pow((track.YCoordinate - currentTracks[i].YCoordinate), 2));
-                //        velocity = Distance / Math.Abs(TimeDifference.TotalSeconds);//https://stackoverflow.com/questions/845379/difference-between-two-datetimes-c
+                // track.Velocity = 100;
+                for (int i = 0; i < currentTracks.Count; i++)
+                {
+                    if (track.Tag == currentTracks[i].Tag)
+                    {
+                        TimeSpan TimeDifference = track.Timestamp - currentTracks[i].Timestamp;
+                        var Distance = Math.Sqrt(Math.Pow((track.XCoordinate - currentTracks[i].XCoordinate), 2) + Math.Pow((track.YCoordinate - currentTracks[i].YCoordinate), 2));
+                        velocity = Distance / Math.Abs(TimeDifference.TotalMilliseconds/1000);//https://stackoverflow.com/questions/845379/difference-between-two-datetimes-c
 
-                //        track.Velocity = velocity;
-                //    }
-                //}
+                        track.Velocity = velocity;
+                    }
+                }
                 //velocityList.Add(track);
 
             }

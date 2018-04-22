@@ -68,19 +68,10 @@ namespace ATM
                 {
                     if (oldtrack.Tag == currenttrack.Tag)
                     {
-                        _velocity.CalculateVelocity(currentTracks, newTracks);
-                        _course.CalculateCourse(currentTracks, newTracks);
+                        _velocity.CalculateVelocity(oldTracks,currentTracks);
+                        _course.CalculateCourse(oldTracks, currentTracks);
                     }
                 }
-
-      
-                
-
-
-
-
-                //}
-                //currentTracks = newTracks;
 
             }
 
@@ -91,25 +82,5 @@ namespace ATM
             //Udskriv!
         }
 
-        //private List<ITrack> oldTracks;
-        //    public void UpdateTracks(List<ITrack> newTrack)
-        //    {
-        //        for (int i = 0; i < newTrack.Count; i++)
-        //        {
-        //            for (int j = 0; j < oldTracks.Count; j++)
-        //            {
-        //                if(newTrack[i].Tag== oldTracks[j].Tag)
-        //                {
-        //                    _velocity.CalculateVelocity(oldTracks, newTrack);
-        //                    _course.CalculateCourse(oldTracks, newTrack);
-        //                }
-        //            }
-        //            oldTracks = newTrack;
-        //        }
-        //    }
-        //public override string ToString()
-        //{ 
-        //      return  "\nVelocity: " + currentTracks[i].Velocity + "\nCourse: " + currentTracks[0].Course;
-        //    }
-    }
+       }
 }
