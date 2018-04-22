@@ -9,6 +9,12 @@ namespace ATM
     public class CheckCollision : ConflictSubject
     {
          public List<ITrack> ConflictingFlights { get; set; }
+
+        public CheckCollision()
+        {
+            ConflictingFlights = new List<ITrack>();
+        }
+
         public void TrackComparison(List<ITrack> trackliste)
         {
             double verticalDistance;
@@ -30,13 +36,12 @@ namespace ATM
 
                         verticalDistance = altitude1 - altitude2;
 
-                        if (verticalDistance<300)
+                        if (verticalDistance < 17000)
                         {
                             horisontalDistance = Math.Sqrt(Math.Pow((X2 - X1), 2) + Math.Pow((Y2- Y1), 2));
 
-                            if (horisontalDistance < 5000)
+                            if (horisontalDistance < 80000)
                             {
-                                ConflictingFlights = new List<ITrack>();
                                 ConflictingFlights.Add(trackliste[i]);
                                 ConflictingFlights.Add(trackliste[j]);
                                 Notify();

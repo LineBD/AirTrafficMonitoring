@@ -1,53 +1,80 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using TransponderReceiver;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TransponderReceiver;
 
-//namespace ATM
-//{
-//    public class ControllerDisplay
-//    {
-//        private ITransponderReceiver _transponderreceiver;
-//        private IFilterFlightLimits _filterFlightLimits;
-//        private ITrack _track;
-//        private ITrackParsing _trackparsing;
-//        private IWrite _write;
-//        private List<ITrack> _trackObjectList;
+namespace ATM
+{
+    public class ControllerDisplay
+    {
+       // private ITransponderReceiver _receiver;
+        private IFilterFlightLimits filter;
+        // private List<ITrack> filteredTracks;
+        private IWrite writer;
+        private CheckCollision compare;
+        private ITrackParsing parseTracks;
+        private IConflictingTracks conflict;
+        private List<ITrack> filteredTracks = new List<ITrack>();
 
-//        private ConflictingTracks _conflict;
 
-//        public ControllerDisplay(ITransponderReceiver receiver, IFilterFlightLimits filterLimit, ITrackParsing trackparsing, IWrite write, List<ITrack> trackObjectList)
 
-//        {
-//            _transponderreceiver = receiver;
-//            _filterFlightLimits = filterLimit;
-//            _trackparsing = trackparsing;
-//            _write = write;
-//            _transponderreceiver.TransponderDataReady += MyReciever_transponderDataReady;
-//        }
+        public ControllerDisplay(ITransponderReceiver transponderReceiver, IFilterFlightLimits _filter, IWrite _writer, CheckCollision _compare, IConflictingTracks _conflict, ITrackParsing _parseTracks)
+        {
+            transponderReceiver.TransponderDataReady += MyReceiver_TransponderDataReady;
+            writer = _writer;
+            filter = _filter;
+            compare = _compare;
+            parseTracks = _parseTracks;
+            conflict = _conflict;
+        }
 
-//        public void MyReciever_transponderDataReady(object sender, RawTransponderDataEventArgs e)
-//        {
+        private void MyReceiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
+        {
+            var myList = e.TransponderData;
+            // List<ITrack> currentTracks = new List<ITrack>();            
+            filteredTracks = new List<ITrack>();
 
-//            var mylist = e.TransponderData;
+            foreach (var track in myList)
+            {
+                ITrack trackObject = parseTracks.CreateFlight(track);
+                if (filter.Filtering(trackObject) == true)
+                {
+                    // Tilføjer filtrerede track-objekter til filtreret-liste
+                    filteredTracks.Add(trackObject);
+                }
+            }
 
-//            foreach (var track in mylist)
-//            {
+            conflict.UpdateTracks(filteredTracks);
+            if(filteredTracks.Count > 1)
+            {
+                compare.TrackComparison(filteredTracks);
+            }
+            
+            // Udregner hastighed og kurs, samt laver en liste med disse objekter. Har dermed en liste med filtrerede objekter med dertilhørende hastighed og kurs.
+            //   
 
-//                ITrack trackObject = _trackparsing.CreateFlight(track);
-//                if (_filterFlightLimits.Filtering(trackObject) == true)
-//                {
-//                    _trackObjectList.Add(trackObject);
-//                    _write.WriteFlight(_trackObjectList);//,_conflict);
-//                }
-                                
-//                //Console.WriteLine(trackObject);
+            //foreach (var trackwithCourseAndVelocity in filteredTracks)
+            //{
+            //    comparedTracks.Add(trackwithCourseAndVelocity);
+            //        if (comparedTracks.Count > 1)
+            //        {
+            //            compare.TrackComparison(comparedTracks);
+            //            writer.WriteFlight(comparedTracks);
+            //        }
 
-//            }
-//        }
+            //    }
 
-//    }
-//}   
+            //udskriv - velocity og kurs udskrives ikke! men det andre gør. 
+
+
+            //if (comparedTracks.Count > 1)
+            //{
+            //    compare.TrackComparison(comparedTracks);
+            //    writer.WriteFlight(t,conflict);
+            //}
+        }
+    }
+}
 

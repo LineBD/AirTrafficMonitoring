@@ -46,11 +46,10 @@
   <ItemGroup>
     <Compile Include="ConflictingTracks.cs" />
     <Compile Include="CourseCalculator.cs" />
-    <Compile Include="Forsøg.cs" />
+    <Compile Include="ControllerDisplay.cs" />
     <Compile Include="Interfaces\ILog.cs" />
     <Compile Include="Output\LogToFile.cs" />
     <Compile Include="Observer\ConflictSubject.cs" />
-    <Compile Include="ControllerDisplay.cs" />
     <Compile Include="CourseCalc.cs" />
     <Compile Include="Observer\DetectConflict.cs" />
     <Compile Include="FilterFlightLimits.cs" />
