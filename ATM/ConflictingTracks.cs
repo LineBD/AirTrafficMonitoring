@@ -17,6 +17,7 @@ namespace ATM
         private VelocityCalc _velocity;
         private CourseCalc _course;
         private IWrite _write;
+        private CheckCollision _compare;
 
         public ConflictingTracks()
         {
@@ -25,6 +26,7 @@ namespace ATM
             _velocity = new VelocityCalc();
             _course = new CourseCalc();
             _write = new WriteToConsole();
+            _compare = new CheckCollision();
 
         }
         public void UpdateTracks(List<ITrack> newTracks)
@@ -74,13 +76,14 @@ namespace ATM
                 }
 
             }
-
+            
             //Konflikthåndtering (Kun for currenttracks)
 
             // udskrivning
             _write.WriteFlight(currentTracks);
-            //Udskriv!
+                       //Udskriv!
         }
+       
 
        }
 }
