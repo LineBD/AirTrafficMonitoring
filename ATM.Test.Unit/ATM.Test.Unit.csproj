@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckCollisionTest.cs" />
     <Compile Include="ControllerDisplayTest.cs" />
     <Compile Include="CourseCalcTest.cs" />
     <Compile Include="FilterFlightLimitsTest.cs" />
