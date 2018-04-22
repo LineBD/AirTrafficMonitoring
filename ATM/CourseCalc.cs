@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +20,18 @@ namespace ATM
                 {
                     if (track.Tag == currentTracks[i].Tag)
                     {
-                        int xCoordinate = track.XCoordinate - currentTracks[i].XCoordinate;
-                        int yCoordinate = track.YCoordinate - currentTracks[i].YCoordinate;
+                        int dx = track.XCoordinate - currentTracks[i].XCoordinate;
+                        int dy = track.YCoordinate - currentTracks[i].YCoordinate;
 
+                        double a = Math.Sqrt(Math.Pow(dx, 2) + Math.Pow(dy, 2));
+                        double b = 90000 - currentTracks[i].YCoordinate;
+                        double course = Math.Acos(b / a);
+                        track.Course = course;
   
 
-                        double theta = Convert.ToDouble(Math.Atan2(xCoordinate, yCoordinate));
-                        double CourseDegrees = theta * (180 / Math.PI);
-                        track.Course = CourseDegrees;
+                        //double theta = Convert.ToDouble(Math.Atan2(xCoordinate, yCoordinate));
+                        //double CourseDegrees = theta * (180 / Math.PI);
+                        //track.Course = CourseDegrees;
 
                     }
                 }
