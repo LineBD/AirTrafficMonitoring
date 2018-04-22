@@ -9,5 +9,6 @@ namespace ATM
     public interface ICourseCalc
     {
         void CalculateCourse(List<ITrack> currentTracks, List<ITrack> newTracks);
+        double courseDegrees { get; set; }
     }
 }

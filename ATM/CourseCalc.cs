@@ -10,7 +10,7 @@ namespace ATM
     public class CourseCalc: ICourseCalc
     {
 
-        private double courseDegrees;
+        public double courseDegrees { get; set; }
         public void CalculateCourse(List<ITrack> currentTracks, List<ITrack> newTracks)
         {
              foreach (var track in newTracks)
