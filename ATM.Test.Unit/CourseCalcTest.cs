@@ -40,8 +40,8 @@ namespace ATM.Test.Unit
             List<ITrack> newList = new List<ITrack>();
             newList.Add(track2);
 
-            List<ITrack> CourseList = _uut.CalculateCourse(currentList, newList); //hvorfor???????????
-            Assert.That(CourseList[0].Course, Is.EqualTo(90));
+            _uut.CalculateCourse(currentList, newList); //hvorfor???????????
+            Assert.That(_uut.courseDegrees, Is.EqualTo(90));
 
          
 

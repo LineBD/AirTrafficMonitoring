@@ -9,15 +9,13 @@ namespace ATM
     public class ConflictingTracks : IConflictingTracks
     {
 
-        //Skal trackinfo i gennem trackparsing og controller 2 x - så vi får returneret to lister vi kan sammenligne?? HVORDAN gør vi det
-
 
         private List<ITrack> currentTracks;
         private List<ITrack> oldTracks;
-        private VelocityCalc _velocity;
-        private CourseCalc _course;
+        private IVelocityCalc _velocity;
+        private ICourseCalc _course;
         private IWrite _write;
-        private CheckCollision _compare;
+
 
         public ConflictingTracks()
         {
@@ -26,7 +24,6 @@ namespace ATM
             _velocity = new VelocityCalc();
             _course = new CourseCalc();
             _write = new WriteToConsole();
-            _compare = new CheckCollision();
 
         }
         public void UpdateTracks(List<ITrack> newTracks)
