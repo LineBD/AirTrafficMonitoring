@@ -8,48 +8,52 @@ using NUnit.Framework;
 using TransponderReceiver;
 
 namespace ATM.Test.Integration
-{
+   
+{ //Mellem conflictingTracks og Velocity
     [TestFixture]
-   public class IntegrationTest2new
+    class IntegrationTest4
     {
-        //Tester forbindelsen mellem controller display og trackparsing
-
         private ControllerDisplay _controller;
         private ITrackParsing parseTracks;
         private ITrack track;
         private IFilterFlightLimits filter;
         private IConflictingTracks conflictingtracks;
+        private IVelocityCalc velocalc;
+        private ICourseCalc coursecalc;
         private CheckCollision collision;
         private IWrite write;
         private ITransponderReceiver receiver;
+        private List<ITrack> list;
         [SetUp]
         public void SetUp()
         {
             receiver = Substitute.For<ITransponderReceiver>();
             track = new Track();
             parseTracks = new TrackParsing(track);
-            write = Substitute.For<IWrite>();
-            filter = Substitute.For<IFilterFlightLimits>();
+            filter = new FilterFlightLimits();
+            conflictingtracks = new ConflictingTracks();
+            velocalc = Substitute.For<IVelocityCalc>();
+            coursecalc = Substitute.For<ICourseCalc>();
             collision = Substitute.For<CheckCollision>();
-            conflictingtracks = Substitute.For<IConflictingTracks>();
+            write = Substitute.For<IWrite>();
             _controller = new ControllerDisplay(receiver, filter, write, collision, conflictingtracks, parseTracks);
+            velocalc = Substitute.For<IVelocityCalc>();
+            coursecalc = Substitute.For<ICourseCalc>();
+
+            var track_ = parseTracks.CreateFlight("TRK042;12000;13000;13000;20180403100622937");
+
+            list = new List<ITrack>();
+            list.Add(track_);
 
         }
-        //[TestCase(9999, 9999,false)]
-        //[TestCase(10000, 9999, false)]
-        //[TestCase(10000,10000,true)]
-        //[TestCase(90000, 90000, true)]
-        //[TestCase(12500,12500,true)]
-        //[TestCase(90001, 90000, false)]
-        //[TestCase(90001, 90001, false)]
         [Test]
-    
-        public void FilterCreatedFlight_FromDLL_FilteredCorrect(int XCoordinate, int YCoordinate, bool State)
+        public void TracksUpdated_FromFilteredList_Correct()
         {
             //_controller.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { "TRK042;1234;5678;13000;20180403100622937" }));
-            var track = parseTracks.CreateFlight("TRK042;12000;12008;13000;20180403100622937");
-            filter.Received().Filtering(track);
-            Assert.That(filter.State, Is.EqualTo(true));
+            var track_ = parseTracks.CreateFlight("TRK042;12000;13000;13000;20180403100622937");
+            conflictingtracks.UpdateTracks(list);
+            velocalc.Received().CalculateVelocity();            
+
         }
     }
 }
