@@ -21,16 +21,19 @@ namespace ATM.Test.Unit
         {
             _uut = new CourseCalc();
 
-            DateTime dateTime1 = new DateTime(2018, 06, 10, 10, 18, 20);
-            DateTime dateTime2 = new DateTime(2018, 06, 10, 10, 18, 18);
+           
 
+        }
+        [Test]
+        public void CalculateCourse_Course0_IsCorrect()
+        {
             _flight1 = new Track
             {
                 Tag = "HEJMEDDIG",
                 XCoordinate = 12000,
                 YCoordinate = 12000,
                 Altitude = 19987,
-                Timestamp = dateTime1
+
             };
 
             _flight2 = new Track
@@ -39,7 +42,7 @@ namespace ATM.Test.Unit
                 XCoordinate = 12000,
                 YCoordinate = 12001,
                 Altitude = 19987,
-                Timestamp = dateTime2
+
             };
 
             _newTracks = new List<ITrack>
@@ -52,14 +55,82 @@ namespace ATM.Test.Unit
                 _flight2
             };
 
+            _uut.CalculateCourse(_newTracks, _oldTracks);
+            Assert.That(_flight2.Course, Is.EqualTo(0));
+
         }
+
         [Test]
-        public void CalculateCourse_Course_IsCorrect()
+        public void CalculateCourse_Course225_IsCorrect()
         {
+            _flight1 = new Track
+            {
+                Tag = "HEJMEDDIG",
+                XCoordinate = 12000,
+                YCoordinate = 12000,
+                Altitude = 19987,
+
+            };
+
+            _flight2 = new Track
+            {
+                Tag = "HEJMEDDIG",
+                XCoordinate = 11000,
+                YCoordinate = 12000,
+                Altitude = 19987,
+
+            };
+
+            _newTracks = new List<ITrack>
+            {
+                _flight1
+            };
+
+            _oldTracks = new List<ITrack>
+            {
+                _flight2
+            };
 
             _uut.CalculateCourse(_newTracks, _oldTracks);
-            Assert.That(_uut.courseDegrees, Is.EqualTo(0));
+            Assert.That(_flight2.Course, Is.EqualTo(270));
 
         }
+
+        [Test]
+        public void CalculateCourse_Course90_IsCorrect()
+        {
+            _flight1 = new Track
+            {
+                Tag = "HEJMEDDIG",
+                XCoordinate = 12000,
+                YCoordinate = 12000,
+                Altitude = 19987,
+
+            };
+
+            _flight2 = new Track
+            {
+                Tag = "HEJMEDDIG",
+                XCoordinate = 12001,
+                YCoordinate = 12000,
+                Altitude = 19987,
+
+            };
+
+            _newTracks = new List<ITrack>
+            {
+                _flight1
+            };
+
+            _oldTracks = new List<ITrack>
+            {
+                _flight2
+            };
+
+            _uut.CalculateCourse(_newTracks, _oldTracks);
+            Assert.That(Math.Round(_flight2.Course,2), Is.EqualTo(90));
+
+        }
+
     }
 }

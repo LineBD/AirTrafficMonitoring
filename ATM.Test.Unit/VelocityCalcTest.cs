@@ -58,7 +58,7 @@ namespace ATM.Test.Unit
         }
 
         [Test]
-        public void VelocityCalc_CorrectVelocity_VelocityIsEqualTo707point10()
+        public void VelocityCalc_CorrectVelocity_VelocityIsEqualTo707point11()
         {
 
             _uut.CalculateVelocity(_oldtTracks, _newTracks);
