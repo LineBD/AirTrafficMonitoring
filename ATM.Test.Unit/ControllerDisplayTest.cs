@@ -38,14 +38,14 @@ namespace ATM.Test.Unit
             var trackliste = new List<string>();
             trackliste.Add(track);
             var transponderevent = new RawTransponderDataEventArgs(trackliste);
-        }//
+        }
 
-        //[Test]
-        //public void TransponderDataRecived_CallCreateFlight_FlightIsCreated()
-        //{
+        [Test]
+        public void TransponderDataRecived_CallCreateFlight_FlightIsCreated()
+        {
 
-        //    _transponderReceiver.Received().TransponderDataReady += _uut.MyReceiver_TransponderDataReady;
-        //}
+            _transponderReceiver.Received().TransponderDataReady += _uut.MyReceiver_TransponderDataReady;
+        }
 
         //[Test]
         //public void TransponderDataReady_Called_IsTrue()
@@ -65,6 +65,5 @@ namespace ATM.Test.Unit
             _filter.Filtering(Arg.Any<ITrack>()).Returns(false);
             _trackObjectList.DidNotReceive().Add(Arg.Any<ITrack>());
         }
-        //Filter + checkcollision+conflictingtracks er unittestet i respektive klasser
     }
 }
