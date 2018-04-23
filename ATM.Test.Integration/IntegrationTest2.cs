@@ -34,7 +34,11 @@ namespace ATM.Test.Integration
             conflictingtracks = Substitute.For<IConflictingTracks>();
             _controller = new ControllerDisplay(receiver, filter, write, collision, conflictingtracks, parseTracks);
 
-            
+         }
+        [Test]
+        public void FilterCreatedFlight_FromDLL_Correct()
+        {
+            tra
         }
     }
 }
