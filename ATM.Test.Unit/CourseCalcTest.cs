@@ -11,39 +11,54 @@ namespace ATM.Test.Unit
     class CourseCalcTest
     {
         private ICourseCalc _uut;
-        private List<ITrack> _flightList;
+        private List<ITrack> _newTracks;
+        private List<ITrack> _oldTracks;
         private ITrack _flight1;
         private ITrack _flight2;
 
         [SetUp]
-        public void setup()
+        public void SetUp()
         {
             _uut = new CourseCalc();
+
+            DateTime dateTime1 = new DateTime(2018, 06, 10, 10, 18, 20);
+            DateTime dateTime2 = new DateTime(2018, 06, 10, 10, 18, 18);
+
+            _flight1 = new Track
+            {
+                Tag = "HEJMEDDIG",
+                XCoordinate = 12000,
+                YCoordinate = 12000,
+                Altitude = 19987,
+                Timestamp = dateTime1
+            };
+
+            _flight2 = new Track
+            {
+                Tag = "HEJMEDDIG",
+                XCoordinate = 12000,
+                YCoordinate = 12001,
+                Altitude = 19987,
+                Timestamp = dateTime2
+            };
+
+            _newTracks = new List<ITrack>
+            {
+                _flight1
+            };
+
+            _oldTracks = new List<ITrack>
+            {
+                _flight2
+            };
 
         }
         [Test]
         public void CalculateCourse_Course_IsCorrect()
         {
 
-            ITrack track1 = new Track();
-            track1.Tag = "KLA";
-            track1.XCoordinate = 12000;
-            track1.YCoordinate = 12000;
-
-            ITrack track2 = new Track();
-            track2.Tag = "KLA";
-            track2.XCoordinate = 12000;
-            track2.YCoordinate = 12001;
-
-            List<ITrack> currentList = new List<ITrack>();
-            currentList.Add(track1);
-            List<ITrack> newList = new List<ITrack>();
-            newList.Add(track2);
-
-            _uut.CalculateCourse(currentList, newList); //hvorfor???????????
-            Assert.That(_uut.courseDegrees, Is.EqualTo(90));
-
-         
+            _uut.CalculateCourse(_newTracks, _oldTracks);
+            Assert.That(_uut.courseDegrees, Is.EqualTo(0));
 
         }
     }
