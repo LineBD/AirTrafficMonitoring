@@ -47,16 +47,16 @@ namespace ATM.Test.Unit
             _transponderReceiver.Received().TransponderDataReady += _uut.MyReceiver_TransponderDataReady;
         }
 
-        [Test]
-        public void TransponderDataReady_Called_IsTrue()
-        {
-            _parseTrack.Received().CreateFlight("AIM500;40000;50000;60000;20161011221035800");
-        }
+        //[Test]
+        //public void TransponderDataReady_Called_IsTrue()
+        //{
+        //    _parseTrack.Received().CreateFlight("AIM500;40000;50000;60000;20161011221035800");
+        //}
 
         [Test]
         public void TrackObjectCreated_FilterReturnsTrue_TrackObjectAddedToList()
         {
-            _filter.Filtering(Arg.Any<ITrack>()).Returns(false);
+            _filter.Filtering(Arg.Any<ITrack>()).Returns(true);
             _trackObjectList.Received().Add(Arg.Any<ITrack>());
         }
         [Test]
@@ -65,5 +65,6 @@ namespace ATM.Test.Unit
             _filter.Filtering(Arg.Any<ITrack>()).Returns(false);
             _trackObjectList.DidNotReceive().Add(Arg.Any<ITrack>());
         }
+        //Filter + checkcollision+conflictingtracks er unittestet i respektive klasser
     }
 }
