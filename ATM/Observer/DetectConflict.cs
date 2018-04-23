@@ -9,20 +9,21 @@ namespace ATM
     public class DetectConflict :IConflictObserver
     {
         private CheckCollision _checkcollision;
-        private IWrite alarm;
-       IWrite log = new LogToFile();
+        private IWrite _alarm;
+        private IWrite _log;
 
-        public DetectConflict(CheckCollision checkcollision)
+        public DetectConflict(CheckCollision checkcollision, IWrite alarm, IWrite log)
         {
-            alarm = new ConflictAlarm();
+            _alarm = alarm;
+            _log = log;
             _checkcollision = checkcollision;
             _checkcollision.Attach(this);
         }
         public void Update()
         {
             List<ITrack> conflictingTracks = _checkcollision.ConflictingFlights;
-            alarm.Write(conflictingTracks);
-            log.Write(conflictingTracks);
+            _alarm.Write(conflictingTracks);
+            _log.Write(conflictingTracks);
         }
     }
 }
