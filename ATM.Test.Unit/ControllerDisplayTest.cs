@@ -40,12 +40,12 @@ namespace ATM.Test.Unit
             var transponderevent = new RawTransponderDataEventArgs(trackliste);
         }//
 
-        [Test]
-        public void TransponderDataRecived_CallCreateFlight_FlightIsCreated()
-        {
+        //[Test]
+        //public void TransponderDataRecived_CallCreateFlight_FlightIsCreated()
+        //{
 
-            _transponderReceiver.Received().TransponderDataReady += _uut.MyReceiver_TransponderDataReady;
-        }
+        //    _transponderReceiver.Received().TransponderDataReady += _uut.MyReceiver_TransponderDataReady;
+        //}
 
         //[Test]
         //public void TransponderDataReady_Called_IsTrue()
