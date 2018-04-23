@@ -36,7 +36,8 @@ namespace ATM.Test.Integration
         [Test]
         public void FilterTracks_Tracksfiltered_Correct()
         {
-            _controller.MyReceiver_TransponderDataReady(this,new RawTransponderDataEventArgs(new List<string> { "TRK042;1234;5678;13000;20180403100622937" }));
+           // parseTracks.CreateFlight("TRK042;1234;5678;13000;20180403100622937");
+            //_controller.MyReceiver_TransponderDataReady(this,new RawTransponderDataEventArgs(new List<string> { "TRK042;1234;5678;13000;20180403100622937" }));
             var track = parseTracks.CreateFlight("TRK042;1234;5678;13000;20180403100622937");
             var track2 = parseTracks.CreateFlight("TRK043;1234;5678;13000;20180403100622938");
             List<ITrack> tracklist = new List<ITrack>()
@@ -45,7 +46,7 @@ namespace ATM.Test.Integration
                 track
             };
 
-            conflictingtracks.Received().UpdateTracks(Arg.Is<List<ITrack>>(x => x[1].Tag == "TRK042" && x[0].Tag == "TRK043"));
+            conflictingtracks.Received().UpdateTracks(Arg.Is<List<ITrack>>(x => x[1].Tag == "TRK042"));
         }
 
     }
