@@ -24,8 +24,8 @@ namespace ATM.Test.Unit
         {
             _uut = new VelocityCalc();
 
-            DateTime dateTime1 = new DateTime(2018, 06, 10, 10, 18, 20);
-            DateTime dateTime2 = new DateTime(2018, 06, 10, 10, 18, 18);
+            DateTime dateTime1 = new DateTime(2018, 06, 10, 10, 18, 18);
+            DateTime dateTime2 = new DateTime(2018, 06, 10, 10, 18, 20);
 
             _flight1 = new Track
             {
@@ -38,7 +38,7 @@ namespace ATM.Test.Unit
 
             _flight2 = new Track
             {
-                Tag = "HALLIHALLO",
+                Tag = "HEJMEDDIG",
                 XCoordinate = 13000,
                 YCoordinate = 13000,
                 Altitude = 19987,
@@ -58,12 +58,12 @@ namespace ATM.Test.Unit
         }
 
         [Test]
-        public void VelocityCalc_CorrectVelocity_VelocityIsEqualTo31point623()
+        public void VelocityCalc_CorrectVelocity_VelocityIsEqualTo707point10()
         {
 
             _uut.CalculateVelocity(_oldtTracks, _newTracks);
             
-            Assert.That(_uut.Velocity_,Is.EqualTo(31.623));
+            Assert.That(Math.Round(_uut.Velocity_,2),Is.EqualTo(707.11));
 
 
         }
