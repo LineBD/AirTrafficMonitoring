@@ -39,7 +39,7 @@ namespace ATM.Test.Integration
 
         }
         [Test]
-        public void CreateFlightFromDLL_OneFlightCreated_IsCorrect()
+        public void CreateFlightFromDLL_FlightCreated_IsCorrect()
         {
             _controller.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { "TRK042;1234;5678;13000;20180403100622937" }));
             parseTracks.Received().CreateFlight("TRK042;1234;5678;13000;20180403100622937");
