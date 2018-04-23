@@ -30,7 +30,7 @@ namespace ATM
             conflict = _conflict;
         }
 
-        private void MyReceiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
+       public void MyReceiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
             var myList = e.TransponderData;
             // List<ITrack> currentTracks = new List<ITrack>();            

@@ -9,22 +9,21 @@ namespace ATM
     public class ConflictingTracks : IConflictingTracks
     {
 
-
+        public List<ITrack> ComparedTracks { get; set; }
         private List<ITrack> currentTracks;
         private List<ITrack> oldTracks;
         private IVelocityCalc _velocity;
         private ICourseCalc _course;
         private IWrite _write;
-        
-
-
         public ConflictingTracks()
         {
+            ComparedTracks = new List<ITrack>();
             currentTracks = new List<ITrack>();
             oldTracks = new List<ITrack>();
             _velocity = new VelocityCalc();
             _course = new CourseCalc();
             _write = new WriteToConsole();
+                        
 
         }
         public void UpdateTracks(List<ITrack> newTracks)
@@ -70,6 +69,7 @@ namespace ATM
                     {
                         _velocity.CalculateVelocity(oldTracks,currentTracks);
                         _course.CalculateCourse(oldTracks, currentTracks);
+                        ComparedTracks.Add(currenttrack);
                     }
                 }
 
