@@ -7,7 +7,7 @@ using System.IO;
 
 namespace ATM
 {
-    public class LogToFile : ILog
+    public class LogToFile : IWrite
     {
         
         public void Write(List<ITrack> conflictingTracks)

@@ -10,7 +10,7 @@ namespace ATM
     {
         private CheckCollision _checkcollision;
         private IWrite alarm;
-        LogToFile log = new LogToFile();
+       IWrite log = new LogToFile();
 
         public DetectConflict(CheckCollision checkcollision)
         {

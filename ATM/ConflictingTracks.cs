@@ -15,6 +15,7 @@ namespace ATM
         private IVelocityCalc _velocity;
         private ICourseCalc _course;
         private IWrite _write;
+        
 
 
         public ConflictingTracks()
