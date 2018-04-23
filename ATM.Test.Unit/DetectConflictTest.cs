@@ -15,6 +15,8 @@ namespace ATM.Test.Unit
         private CheckCollision checkcollision;
         private IWrite alarm;
         private IWrite log;
+        private List<ITrack> tracklList1;
+        private List<ITrack> tracklList2;
         [SetUp]
 
         public void SetUp()
@@ -36,31 +38,39 @@ namespace ATM.Test.Unit
             ////Opdaterer
             //uut.Update();
             log = Substitute.For<IWrite>();
+            alarm = Substitute.For<IWrite>();
             checkcollision = Substitute.For<CheckCollision>();
             uut = new DetectConflict(checkcollision);
             //opretter to tracks med forskellig tag for at sammenligne de
+
+            DateTime dateTime1 = new DateTime(2018, 06, 10, 10, 18, 18);
+            DateTime dateTime2 = new DateTime(2018, 06, 10, 10, 18, 20);
+
             ITrack track1 = new Track();
             track1.Tag = "KLA123";
-            track1.Timestamp = DateTime.ParseExact("20182304123456789", "yyyyMMddHHmmssfff", System.Globalization.CultureInfo.InvariantCulture);
+            track1.Timestamp = dateTime1;
                 
 
             ITrack track2 = new Track();
             track2.Tag = "RIH456";
-            track1.Timestamp = DateTime.ParseExact("20182304123458789", "yyyyMMddHHmmssfff", System.Globalization.CultureInfo.InvariantCulture);
+            track1.Timestamp = dateTime2;
 
+            tracklList1.Add(track1);
+
+            tracklList2.Add(track2);
         }
 
-        [Test]
-        public void WriteToFile_WriteBothTracks_Correct()
-        {
-            uut.Received().Wri
-        }
+        //[Test]
+        //public void WriteToFile_WriteBothTracks_Correct()
+        //{
+        //    uut.Received().Wri
+        //}
 
             [Test]
 
         public void UpdateList_WriteTrackOne_CorrectPrint()
         {
-            alarm.Received().Write(Arg.Is<List<ITrack>>(trackList => trackList[0].Tag.Contains("KLA")));
+            alarm.Received().Write(tracklList1[0].Tag.Contains("KLA"));
         }
         [Test]
         public void UpdateList_WriteTrackTwo_CorrectPrint()
