@@ -8,7 +8,8 @@ namespace ATM
 {
     public interface IConflictingTracks
     {
-        void UpdateTracks(List<ITrack> newTrack);
+        void UpdateTracks(List<ITrack> newTracks);
+        List<ITrack> ComparedTracks { get; set; }
         //string ToString();
 
     }
