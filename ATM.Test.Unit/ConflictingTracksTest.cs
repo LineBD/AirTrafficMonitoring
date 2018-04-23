@@ -13,7 +13,8 @@ namespace ATM.Test.Unit
     {
         private ConflictingTracks uut;
 
-        public void Setup()
+        [SetUp]
+        public void SetUp()
         {
             uut = new ConflictingTracks();
 
@@ -21,7 +22,7 @@ namespace ATM.Test.Unit
         
         [TestCase("ABD", "ABC", 0)]
         [TestCase("ABC", "ABD", 0)]
-        [TestCase("ABC", "ABC", 2)]
+        [TestCase("ABC", "ABC", 1)]
 
         public void ConflicingTracks_CheckTags_IsCorrect(string tag1, string tag2, int count)
         {
