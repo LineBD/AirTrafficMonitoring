@@ -9,9 +9,7 @@ namespace ATM
 {
     public class ControllerDisplay
     {
-       // private ITransponderReceiver _receiver;
         private IFilterFlightLimits filter;
-        // private List<ITrack> filteredTracks;
         private IWrite writer;
         private CheckCollision compare;
         private ITrackParsing parseTracks;
@@ -32,8 +30,7 @@ namespace ATM
 
        public void MyReceiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
-            var myList = e.TransponderData;
-            // List<ITrack> currentTracks = new List<ITrack>();            
+            var myList = e.TransponderData;     
             filteredTracks = new List<ITrack>();
 
             foreach (var track in myList)
@@ -52,28 +49,6 @@ namespace ATM
                 compare.TrackComparison(filteredTracks);
             }
             
-            // Udregner hastighed og kurs, samt laver en liste med disse objekter. Har dermed en liste med filtrerede objekter med dertilhørende hastighed og kurs.
-            //   
-
-            //foreach (var trackwithCourseAndVelocity in filteredTracks)
-            //{
-            //    comparedTracks.Add(trackwithCourseAndVelocity);
-            //        if (comparedTracks.Count > 1)
-            //        {
-            //            compare.TrackComparison(comparedTracks);
-            //            writer.WriteFlight(comparedTracks);
-            //        }
-
-            //    }
-
-            //udskriv - velocity og kurs udskrives ikke! men det andre gør. 
-
-
-            //if (comparedTracks.Count > 1)
-            //{
-            //    compare.TrackComparison(comparedTracks);
-            //    writer.WriteFlight(t,conflict);
-            //}
         }
     }
 }
