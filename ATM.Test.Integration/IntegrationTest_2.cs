@@ -39,13 +39,17 @@ namespace ATM.Test.Integration
         public void CompareTracks_UpdateTracks_Correct()
         {
             List<ITrack> list = new List<ITrack>();
-            string _flight = "TRK042;13000;130000;13000;20180403100622937";
-            _mainreceiver.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { _flight }));
+            string _flight1 = "TRK042;13000;13000;13000;20180403100622937";
+            string _flight2 = "TTG065;13001;13001;13001;20180403100622937";
+            _mainreceiver.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { _flight1 }));
+            _mainreceiver.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { _flight2 }));
+            ITrack track1 = parseTracks.CreateFlight(_flight1);
+            ITrack track2 = parseTracks.CreateFlight(_flight2);
+            list.Add(track1);
+            list.Add(track2);
 
-            ITrack track = parseTracks.CreateFlight(_flight);
-            filter.Filtering(track);
-            list.Add(track);
-            comparetracks.Received().UpdateTracks(list);
+            comparetracks.UpdateTracks(list);
+            write.Received().Write(list);
         }
 
 
