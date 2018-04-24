@@ -78,9 +78,7 @@ namespace ATM.Test.Integration
 
             _velocityCalc.CalculateVelocity(_old,_new);
             _courseCalc.CalculateCourse(_old,_new);
-            _collision.Received().TrackComparison(_old);
-
-            //_writeToConsole.Received().Write(_newTracks);
+            _collision.Received().TrackComparison(_new);
             
         }
 
