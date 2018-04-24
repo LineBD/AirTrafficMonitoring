@@ -16,7 +16,7 @@ namespace ATM.Test.Integration
         private ITrackParsing parseTracks;
         private ITrack track;
         private IFilterFlightLimits filter;
-        private IConflictingTracks _compare;
+        private ICompareTracks _compare;
         private CheckCollision collision;
         private IWrite write;
         private ITransponderReceiver receiver;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public class CompareTracks : IConflictingTracks
+    public class CompareTracks : ICompareTracks
     {
 
         public List<ITrack> ComparedTracks { get; set; }

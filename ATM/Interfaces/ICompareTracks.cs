@@ -10,7 +10,5 @@ namespace ATM
     {
         void UpdateTracks(List<ITrack> newTracks);
         List<ITrack> ComparedTracks { get; set; }
-        //string ToString();
-
     }
 }
