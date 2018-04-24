@@ -38,6 +38,7 @@ namespace ATM.Test.Integration
         [Test]
         public void etellerandet_etellerandet_noget()
         {
+            // der laves et fly som vi ved er indenfor luftrummet
             Track _flight1 = new Track
             {
                 Tag = "HEJMEDDIG",
@@ -67,7 +68,7 @@ namespace ATM.Test.Integration
             };
 
             _filter.Filtering(_track);
-            _velocityCalc.Received().CalculateVelocity(_oldTracks,_newTracks);
+            _velocityCalc.Received().CalculateVelocity(_newTracks,_oldTracks);
         }
     }
 }

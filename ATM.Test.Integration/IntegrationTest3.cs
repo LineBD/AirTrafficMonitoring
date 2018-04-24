@@ -16,7 +16,7 @@ namespace ATM.Test.Integration
         private ITrackParsing parseTracks;
         private ITrack track;
         private IFilterFlightLimits filter;
-        private IConflictingTracks conflictingtracks;
+        private IConflictingTracks _compare;
         private CheckCollision collision;
         private IWrite write;
         private ITransponderReceiver receiver;
@@ -29,24 +29,30 @@ namespace ATM.Test.Integration
             write = Substitute.For<IWrite>();
             filter = new FilterFlightLimits();
             collision = Substitute.For<CheckCollision>();
-            conflictingtracks = Substitute.For<IConflictingTracks>();
-            _reciever = new MainReceiver(receiver, filter, write, collision, conflictingtracks, parseTracks);
+            _compare = new CompareTracks();
+            _reciever = new MainReceiver(receiver, filter, write, collision, _compare, parseTracks);
 
         }
         [Test]
         public void FilterTracks_Tracksfiltered_Correct()
         {
-           // parseTracks.CreateFlight("TRK042;1234;5678;13000;20180403100622937");
-            //_controller.MyReceiver_TransponderDataReady(this,new RawTransponderDataEventArgs(new List<string> { "TRK042;1234;5678;13000;20180403100622937" }));
-            var track = parseTracks.CreateFlight("TRK042;1234;5678;13000;20180403100622937");
-            var track2 = parseTracks.CreateFlight("TRK043;1234;5678;13000;20180403100622938");
-            List<ITrack> tracklist = new List<ITrack>()
+            Track _flight1 = new Track
             {
-                track2,
-                track
+                Tag = "HEJMEDDIG",
+                XCoordinate = 12000,
+                YCoordinate = 12000,
+
             };
 
-            conflictingtracks.Received().UpdateTracks(Arg.Is<List<ITrack>>(x => x[1].Tag == "TRK042"));
+            List<ITrack> _flightList = new List<ITrack>
+            {
+                _flight1
+            };
+
+
+            _compare.UpdateTracks(_flightList);
+            collision.Received().TrackComparison(_flightList);
+
         }
 
     }

@@ -15,7 +15,7 @@ namespace ATM.Test.Integration
         private ITrackParsing _parseTracks;
         private ITrack _track;
         private IFilterFlightLimits _filter;
-        private IConflictingTracks _conflictingtracks;
+        private IConflictingTracks _compare;
         private CheckCollision _collision;
         private IWrite _write;
         private IWrite _writeToConsole;
@@ -32,31 +32,101 @@ namespace ATM.Test.Integration
             _writeToConsole = Substitute.For<WriteToConsole>();
             _filter = new FilterFlightLimits();
             _collision = Substitute.For<CheckCollision>();
-            _conflictingtracks = new CompareTracks();
+            _compare = new CompareTracks();
             _velocityCalc = new VelocityCalc();
             _courseCalc = new CourseCalc();
-            _reciever = new MainReceiver(_receiver, _filter, _write, _collision, _conflictingtracks, _parseTracks);
+            _reciever = new MainReceiver(_receiver, _filter, _write, _collision, _compare, _parseTracks);
 
         }
 
         [Test]
-        public void noget_nogte_nogetmere()
+        public void CheckCollision_VelocityAndCourseAt0Degrees50metersPrSecond_IsCorrect()
         {
-            _filter.Filtering(_track);
+            DateTime dateTime1 = new DateTime(2018, 06, 10, 10, 18, 18);
+            DateTime dateTime2 = new DateTime(2018, 06, 10, 10, 18, 20);
+
+// der er valgt fly som ligger indenfor flyverummet
+            Track _flight1 = new Track
+            {
+                Tag = "HEJMEDDIG",
+                XCoordinate = 12000,
+                YCoordinate = 12000,
+                Timestamp = dateTime1
+
+
+            };
+
+            List<ITrack> _old = new List<ITrack>
+            {
+                _flight1
+            };
+
             Track _flight2 = new Track
             {
                 Tag = "HEJMEDDIG",
                 XCoordinate = 12000,
-                YCoordinate = 12001,
+                YCoordinate = 12100,
                 Altitude = 19987,
+                Timestamp = dateTime2
 
             };
 
-            List<ITrack> _newTracks = new List<ITrack>
+            List<ITrack> _new = new List<ITrack>
             {
                 _flight2
             };
-            _writeToConsole.Received().Write(_newTracks);
+
+            _velocityCalc.CalculateVelocity(_old,_new);
+            _courseCalc.CalculateCourse(_old,_new);
+            _collision.Received().TrackComparison(_old);
+
+            //_writeToConsole.Received().Write(_newTracks);
+            
         }
+
+        [Test]
+        public void CheckCollision_VelocityAndCourseAt90Degrees100metersPrSecond_IsCorrect()
+        {
+            DateTime dateTime1 = new DateTime(2018, 06, 10, 10, 18, 19);
+            DateTime dateTime2 = new DateTime(2018, 06, 10, 10, 18, 20);
+
+           // der er valgt fly som ligger indenfor flyverummet
+            Track _flight1 = new Track
+            {
+                Tag = "HEJMEDDIG",
+                XCoordinate = 12000,
+                YCoordinate = 12000,
+                Timestamp = dateTime1
+
+
+            };
+
+            List<ITrack> _old = new List<ITrack>
+            {
+                _flight1
+            };
+
+            Track _flight2 = new Track
+            {
+                Tag = "HEJMEDDIG",
+                XCoordinate = 12100,
+                YCoordinate = 12000,
+                Altitude = 19987,
+                Timestamp = dateTime2
+
+            };
+
+            List<ITrack> _new = new List<ITrack>
+            {
+                _flight2
+            };
+
+            _velocityCalc.CalculateVelocity(_old, _new);
+            _courseCalc.CalculateCourse(_old, _new);
+            _collision.Received().TrackComparison(_old);
+
+
+        }
+
     }
 }
