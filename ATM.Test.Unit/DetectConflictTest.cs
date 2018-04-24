@@ -59,6 +59,13 @@ namespace ATM.Test.Unit
         {
             alarm.Received().Write(Arg.Is<List<ITrack>>(trackList => trackList[1].Tag.Contains("RIH")));
         }
+
+        [Test]
+        public void UpdateList_WriteTrack_CorrectLog()
+        {
+            log.Received().Write(Arg.Is<List<ITrack>>(trackList => trackList[1].Tag.Contains("RIH")));
+        }
+
         [Test]
         public void Update_TimeStamp_CorrectYear()
         {

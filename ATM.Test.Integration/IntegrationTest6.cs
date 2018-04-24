@@ -42,23 +42,6 @@ namespace ATM.Test.Integration
         [Test]
         public void nu_nu_nu()
         {
-            //DateTime dateTime1 = new DateTime(2018, 06, 10, 10, 18, 18);
-            //DateTime dateTime2 = new DateTime(2018, 06, 10, 10, 18, 20);
-
-            //Track _flight2 = new Track
-            //{
-            //    Tag = "HEJMEDDIG",
-            //    XCoordinate = 12000,
-            //    YCoordinate = 12001,
-            //    Altitude = 19987,
-            //    Timestamp = dateTime1
-
-            //};
-
-            //List<ITrack> _newTracks = new List<ITrack>
-            //{
-            //    _flight2
-            //};
 
 
             List<ITrack> list = new List<ITrack>();
