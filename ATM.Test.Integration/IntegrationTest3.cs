@@ -12,7 +12,7 @@ namespace ATM.Test.Integration
     [TestFixture]
         public class IntegrationTest3
     {
-        private ControllerDisplay _controller;
+        private MainReceiver _reciever;
         private ITrackParsing parseTracks;
         private ITrack track;
         private IFilterFlightLimits filter;
@@ -30,7 +30,7 @@ namespace ATM.Test.Integration
             filter = new FilterFlightLimits();
             collision = Substitute.For<CheckCollision>();
             conflictingtracks = Substitute.For<IConflictingTracks>();
-            _controller = new ControllerDisplay(receiver, filter, write, collision, conflictingtracks, parseTracks);
+            _reciever = new MainReceiver(receiver, filter, write, collision, conflictingtracks, parseTracks);
 
         }
         [Test]

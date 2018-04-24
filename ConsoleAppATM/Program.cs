@@ -17,7 +17,7 @@ namespace ConsoleAppATM
            CheckCollision compare = new CheckCollision();
            ITrack track = new Track();
            ITrackParsing parseTracks = new TrackParsing(track);
-           IConflictingTracks conflict = new ConflictingTracks();
+           IConflictingTracks conflict = new CompareTracks();
             IFilterFlightLimits filter = new FilterFlightLimits();
             var myReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
             
