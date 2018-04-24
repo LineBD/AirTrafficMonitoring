@@ -15,7 +15,7 @@ namespace ATM.Test.Integration
         private ITrackParsing _parseTracks;
         private ITrack _track;
         private IFilterFlightLimits _filter;
-        private IConflictingTracks _conflictingtracks;
+        private ICompareTracks _comparetracks;
         private CheckCollision _collision;
         private IWrite _write;
         private IWrite _writeToConsole;
@@ -30,10 +30,10 @@ namespace ATM.Test.Integration
             _parseTracks = new TrackParsing(_track);
             _filter = new FilterFlightLimits();
             _collision = Substitute.For<CheckCollision>();
-            _conflictingtracks = new CompareTracks();
+            _comparetracks = new CompareTracks();
             _writeToConsole = Substitute.For<WriteToConsole>();
             _reciever =
-                new MainReceiver(_receiver, _filter, _write, _collision, _conflictingtracks, _parseTracks);
+                new MainReceiver(_receiver, _filter, _write, _collision, _comparetracks, _parseTracks);
 
         }
 
@@ -55,7 +55,7 @@ namespace ATM.Test.Integration
                 _flight2
             };
 
-            _conflictingtracks.UpdateTracks(_newTracks);
+            _comparetracks.UpdateTracks(_newTracks);
             _writeToConsole.Received().Write(_newTracks);
         }
     }

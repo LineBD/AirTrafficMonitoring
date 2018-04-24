@@ -18,7 +18,7 @@ namespace ATM.Test.Unit
         private IWrite _write;
         private CheckCollision _compare;
         private ITrackParsing _parseTrack;
-        private IConflictingTracks _conflict;
+        private ICompareTracks _conflict;
         private ITrack _track;
         private List<ITrack> _trackObjectList;
         private string track;

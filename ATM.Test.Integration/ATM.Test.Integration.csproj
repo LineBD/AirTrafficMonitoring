@@ -69,10 +69,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ATM.Test.Unit\ATM.Test.Unit.csproj">
-      <Project>{b60448f9-46e0-403f-bd70-8a26fcc836c7}</Project>
-      <Name>ATM.Test.Unit</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ATM\ATM.csproj">
       <Project>{29218843-ae4c-4c1f-ba22-4cbc0412f3ea}</Project>
       <Name>ATM</Name>
