@@ -40,9 +40,8 @@ namespace ATM.Test.Integration
         }
 
         [Test]
-        public void h()
+        public void CheckCollision_CollidingStringsFromMainReciver_AlarmCalled()
         {
-
 
             List<ITrack> list = new List<ITrack>();
             string _flight1 = "TRK042;13000;13000;13000;20180403100622937";
