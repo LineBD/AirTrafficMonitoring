@@ -23,8 +23,6 @@ namespace ATM
             _velocity = new VelocityCalc();
             _course = new CourseCalc();
             _write = new WriteToConsole();
-                        
-
         }
         public void UpdateTracks(List<ITrack> newTracks)
         {

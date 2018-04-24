@@ -14,15 +14,15 @@ namespace ConsoleAppATM
         {
                       
            IWrite writer = new WriteToConsole();
-           CheckCollision compare = new CheckCollision();
+           CheckCollision checkcollision = new CheckCollision();
            ITrack track = new Track();
            ITrackParsing parseTracks = new TrackParsing(track);
-           IConflictingTracks conflict = new CompareTracks();
-            IFilterFlightLimits filter = new FilterFlightLimits();
+           ICompareTracks comparetracks = new CompareTracks();
+           IFilterFlightLimits filter = new FilterFlightLimits();
             var myReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
             
 
-            var receiver = new MainReceiver(myReceiver,filter,writer,compare,conflict,parseTracks);
+            var receiver = new MainReceiver(myReceiver,filter,writer, checkcollision, comparetracks, parseTracks);
           
             Console.ReadKey();
            
