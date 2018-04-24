@@ -21,6 +21,7 @@ namespace ATM.Test.Unit
         private IConflictingTracks _conflict;
         private ITrack _track;
         private List<ITrack> _trackObjectList;
+        private string track;
 
         [SetUp]
         public void SetUp()
@@ -37,7 +38,7 @@ namespace ATM.Test.Unit
             var track = "AIM500;40000;50000;60000;20161011221035800";
             var trackliste = new List<string>();
             trackliste.Add(track);
-            var transponderevent = new RawTransponderDataEventArgs(trackliste);
+
         }
 
         [Test]
@@ -50,8 +51,10 @@ namespace ATM.Test.Unit
         //[Test]
         //public void TransponderDataReady_Called_IsTrue()
         //{
-        //    _parseTrack.Received().CreateFlight("AIM500;40000;50000;60000;20161011221035800");
-        //}
+        //   // _uut.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<String> { track }));
+        //    //Assert.That(_parseTrack.CreateFlight(track),Is.EqualTo("AIM500;40000;50000;60000;20161011221035800"));
+        //    _parseTrack.Received().CreateFlight(Arg.Is<string>(s => s == "AIM500;40000;50000;60000;20161011221035800"));
+        //} Virker ikke..
 
         [Test]
         public void TrackObjectCreated_FilterReturnsTrue_TrackObjectAddedToList()
