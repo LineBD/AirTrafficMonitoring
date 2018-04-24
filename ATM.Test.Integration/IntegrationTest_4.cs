@@ -9,7 +9,7 @@ using TransponderReceiver;
 
 namespace ATM.Test.Integration
 {
-    class IntegrationTest44
+    class IntegrationTest_4
     {
         private MainReceiver _reciever;
         private ITrackParsing _parseTracks;

@@ -14,7 +14,6 @@ namespace ATM
         {
             foreach (var track in newTracks)
             {
-                // track.Velocity = 100;
                 for (int i = 0; i < currentTracks.Count; i++)
                 {
                     if (track.Tag == currentTracks[i].Tag)

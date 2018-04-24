@@ -38,20 +38,17 @@ namespace ATM.Test.Integration
        
         [Test]
     
-        public void FilterCreatedFlight_FromString_Correct(bool State)
+        public void FilterCreatedFlight_FromString_Correct()
         {
-            List<ITrack> list = new List<ITrack>();
-            string _flight1 = "TRK042;13000;13000;13000;20180403100622937";
-            string _flight2 = "TTG065;13001;13001;13001;20180403100622937";
-            _mainreceiver.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { _flight1 }));
-            _mainreceiver.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { _flight2 }));
-            ITrack track1 = parseTracks.CreateFlight(_flight1);
-            ITrack track2 = parseTracks.CreateFlight(_flight2);
-           
+            //der er valgt et fly som vi ved er indenfor filteret grænser
 
-            Assert.That(filter.Received().Filtering(track1), Is.EqualTo(true));
-           
-     
+            string _flight1 = "TRK042;13000;13000;13000;20180403100622937";
+            _mainreceiver.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { _flight1 }));
+            ITrack track1 = parseTracks.CreateFlight(_flight1);
+
+            filter.Received().Filtering(Arg.Is<ITrack>(s => s.Tag.Equals("TRK042")));
+
+
 
         }
     }

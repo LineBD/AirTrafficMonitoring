@@ -73,8 +73,6 @@ namespace ATM.Test.Integration
 
             _collision.TrackComparison(list);
             _alarm.Received().Write(list);
-            //_comparetracks.UpdateTracks(_newTracks);
-            //_writeToConsole.Received().Write(_newTracks);
         }
     }
 }
