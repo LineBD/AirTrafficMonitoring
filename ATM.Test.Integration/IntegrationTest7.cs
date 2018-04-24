@@ -11,7 +11,7 @@ namespace ATM.Test.Integration
 {
     class IntegrationTest7
     {
-        private ControllerDisplay _controller;
+        private MainReceiver _reciever;
         private ITrackParsing _parseTracks;
         private ITrack _track;
         private IFilterFlightLimits _filter;
@@ -30,10 +30,10 @@ namespace ATM.Test.Integration
             _parseTracks = new TrackParsing(_track);
             _filter = new FilterFlightLimits();
             _collision = Substitute.For<CheckCollision>();
-            _conflictingtracks = new ConflictingTracks();
+            _conflictingtracks = new CompareTracks();
             _writeToConsole = Substitute.For<WriteToConsole>();
-            _controller =
-                new ControllerDisplay(_receiver, _filter, _write, _collision, _conflictingtracks, _parseTracks);
+            _reciever =
+                new MainReceiver(_receiver, _filter, _write, _collision, _conflictingtracks, _parseTracks);
 
         }
 

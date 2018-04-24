@@ -10,9 +10,9 @@ using NUnit.Framework;
 namespace ATM.Test.Unit
 {
     [TestFixture]
-    class ControllerDisplayTest
+    class MainRecieverTest
     {
-        private ControllerDisplay _uut;
+        private MainReceiver _uut;
         private ITransponderReceiver _transponderReceiver;
         private IFilterFlightLimits _filter;
         private IWrite _write;
@@ -33,7 +33,7 @@ namespace ATM.Test.Unit
             _write = Substitute.For<IWrite>();
             _trackObjectList = Substitute.For<List<ITrack>>();
             _track = Substitute.For<ITrack>();
-            _uut = new ControllerDisplay(_transponderReceiver, _filter, _write, _compare, _conflict, _parseTrack);
+            _uut = new MainReceiver(_transponderReceiver, _filter, _write, _compare, _conflict, _parseTrack);
 
             var track = "AIM500;40000;50000;60000;20161011221035800";
             var trackliste = new List<string>();

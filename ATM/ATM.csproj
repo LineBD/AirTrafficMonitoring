@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="MainReceiver.cs" />
     <Compile Include="Output\ConflictAlarm.cs" />
-    <Compile Include="ConflictingTracks.cs" />
+    <Compile Include="CompareTracks.cs" />
     <Compile Include="ControllerDisplay.cs" />
     <Compile Include="Output\LogToFile.cs" />
     <Compile Include="Observer\ConflictSubject.cs" />
@@ -54,7 +54,7 @@
     <Compile Include="Observer\DetectConflict.cs" />
     <Compile Include="FilterFlightLimits.cs" />
     <Compile Include="Observer\IConflictObserver.cs" />
-    <Compile Include="Interfaces\IConflictingTracks.cs" />
+    <Compile Include="Interfaces\ICompareTracks.cs" />
     <Compile Include="Interfaces\IFilterFlightLimits.cs" />
     <Compile Include="Interfaces\ICourseCalc.cs" />
     <Compile Include="Interfaces\ITrack.cs" />

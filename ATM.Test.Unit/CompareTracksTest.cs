@@ -9,14 +9,14 @@ using NUnit.Framework.Internal;
 namespace ATM.Test.Unit
 {
     [TestFixture]
-    class ConflictingTracksTest
+    class CompareTracksTest
     {
-        private ConflictingTracks uut;
+        private CompareTracks uut;
 
         [SetUp]
         public void SetUp()
         {
-            uut = new ConflictingTracks();
+            uut = new CompareTracks();
 
         }
         

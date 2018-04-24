@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public class ConflictingTracks : IConflictingTracks
+    public class CompareTracks : IConflictingTracks
     {
 
         public List<ITrack> ComparedTracks { get; set; }
@@ -15,7 +15,7 @@ namespace ATM
         private IVelocityCalc _velocity;
         private ICourseCalc _course;
         private IWrite _write;
-        public ConflictingTracks()
+        public CompareTracks()
         {
             ComparedTracks = new List<ITrack>();
             currentTracks = new List<ITrack>();

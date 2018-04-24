@@ -56,8 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheckCollisionTest.cs" />
-    <Compile Include="ConflictingTracksTest.cs" />
-    <Compile Include="ControllerDisplayTest.cs" />
+    <Compile Include="CompareTracksTest.cs" />
+    <Compile Include="MainRecieverTest.cs" />
     <Compile Include="CourseCalcTest.cs" />
     <Compile Include="DetectConflictTest.cs" />
     <Compile Include="FilterFlightLimitsTest.cs" />
