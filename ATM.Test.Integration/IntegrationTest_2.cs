@@ -10,7 +10,7 @@ using TransponderReceiver;
 namespace ATM.Test.Integration
 {
     [TestFixture]
-   public class IntegrationTest_1
+    public class IntegrationTest_2
     {
         //Tester forbindelsen mellem controller display og trackparsing
 
@@ -29,22 +29,25 @@ namespace ATM.Test.Integration
             track = new Track();
             parseTracks = new TrackParsing(track);
             write = Substitute.For<WriteToConsole>();
-            filter = Substitute.For<IFilterFlightLimits>();
+            filter = new FilterFlightLimits();
             collision = Substitute.For<CheckCollision>();
             comparetracks = Substitute.For<ICompareTracks>();
-            _mainreceiver= new MainReceiver(receiver, filter, write, collision, comparetracks, parseTracks);
-
+            _mainreceiver = new MainReceiver(receiver, filter, write, collision, comparetracks, parseTracks);
         }
-       
+
         [Test]
-    
-        public void FilterCreatedFlight_FromString_Correct()
+        public void CompareTracks_UpdateTracks_Correct()
         {
+            List<ITrack> list = new List<ITrack>();
             string _flight = "TRK042;13000;130000;13000;20180403100622937";
             _mainreceiver.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { _flight }));
 
             ITrack track = parseTracks.CreateFlight(_flight);
-            filter.Received().Filtering(track);
+            filter.Filtering(track);
+            list.Add(track);
+            comparetracks.Received().UpdateTracks(list);
         }
+
+
     }
 }

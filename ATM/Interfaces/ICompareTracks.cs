@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public interface IConflictingTracks
+    public interface ICompareTracks
     {
         void UpdateTracks(List<ITrack> newTracks);
         List<ITrack> ComparedTracks { get; set; }

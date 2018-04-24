@@ -11,21 +11,21 @@ namespace ATM
     {
         private IFilterFlightLimits filter;
         private IWrite writer;
-        private CheckCollision compare;
+        private CheckCollision checkcollision;
         private ITrackParsing parseTracks;
-        private IConflictingTracks conflict;
+        private ICompareTracks comparetracks;
         private List<ITrack> filteredTracks = new List<ITrack>();
 
 
 
-        public MainReceiver(ITransponderReceiver transponderReceiver, IFilterFlightLimits _filter, IWrite _writer, CheckCollision _compare, IConflictingTracks _conflict, ITrackParsing _parseTracks)
+        public MainReceiver(ITransponderReceiver transponderReceiver, IFilterFlightLimits _filter, IWrite _writer, CheckCollision _checkcollision, ICompareTracks _comparetracks, ITrackParsing _parseTracks)
         {
             transponderReceiver.TransponderDataReady += MyReceiver_TransponderDataReady;
             writer = _writer;
             filter = _filter;
-            compare = _compare;
+            checkcollision = _checkcollision;
             parseTracks = _parseTracks;
-            conflict = _conflict;
+            comparetracks = _comparetracks;
         }
 
         public void MyReceiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
@@ -43,10 +43,10 @@ namespace ATM
                 }
             }
 
-            conflict.UpdateTracks(filteredTracks);
+            comparetracks.UpdateTracks(filteredTracks);
             if (filteredTracks.Count > 1)
             {
-                compare.TrackComparison(filteredTracks);
+                checkcollision.TrackComparison(filteredTracks);
             }
 
         }
