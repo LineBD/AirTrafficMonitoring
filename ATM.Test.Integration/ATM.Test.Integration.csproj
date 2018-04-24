@@ -57,7 +57,7 @@
   <ItemGroup>
     <Compile Include="IntegrationsTest5.cs" />
     <Compile Include="IntegrationTest1new.cs" />
-    <Compile Include="IntegrationTest2new.cs" />
+    <Compile Include="IntegrationTest_1.cs" />
     <Compile Include="IntegrationTest3.cs" />
     <Compile Include="IntegrationTest6.cs" />
     <Compile Include="IntegrationTest7.cs" />

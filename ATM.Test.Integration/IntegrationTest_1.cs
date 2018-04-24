@@ -10,11 +10,11 @@ using TransponderReceiver;
 namespace ATM.Test.Integration
 {
     [TestFixture]
-   public class IntegrationTest2new
+   public class IntegrationTest_1
     {
         //Tester forbindelsen mellem controller display og trackparsing
 
-        private Receiver _maincontroller;
+        private MainReceiver _mainreceiver;
         private ITrackParsing parseTracks;
         private ITrack track;
         private IFilterFlightLimits filter;
@@ -28,11 +28,11 @@ namespace ATM.Test.Integration
             receiver = Substitute.For<ITransponderReceiver>();
             track = new Track();
             parseTracks = new TrackParsing(track);
-            write = Substitute.For<IWrite>();
+            write = Substitute.For<WriteToConsole>();
             filter = Substitute.For<IFilterFlightLimits>();
             collision = Substitute.For<CheckCollision>();
             conflictingtracks = Substitute.For<IConflictingTracks>();
-            _maincontroller = new Receiver(receiver, filter, write, collision, conflictingtracks, parseTracks);
+            _mainreceiver= new MainReceiver(receiver, filter, write, collision, conflictingtracks, parseTracks);
 
         }
         //[TestCase(9999, 9999,false)]
@@ -44,12 +44,10 @@ namespace ATM.Test.Integration
         //[TestCase(90001, 90001, false)]
         [Test]
     
-        public void FilterCreatedFlight_FromDLL_FilteredCorrect(int XCoordinate, int YCoordinate, bool State)
+        public void FilterCreatedFlight_FromString_Correct(int XCoordinate, int YCoordinate, bool State)
         {
-            //_controller.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { "TRK042;1234;5678;13000;20180403100622937" }));
-            var track = parseTracks.CreateFlight("TRK042;12000;12008;13000;20180403100622937");
-            filter.Received().Filtering(track);
-            Assert.That(filter.State, Is.EqualTo(true));
+            var _flight = "TRK042;1234;5678;13000;20180403100622937";
+            parseTracks.Received().CreateFlight(_flight);
         }
     }
 }
