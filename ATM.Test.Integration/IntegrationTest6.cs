@@ -40,7 +40,7 @@ namespace ATM.Test.Integration
         }
 
         [Test]
-        public void nu_nu_nu()
+        public void h()
         {
 
 

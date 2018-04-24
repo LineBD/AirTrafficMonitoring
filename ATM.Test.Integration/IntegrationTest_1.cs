@@ -44,7 +44,6 @@ namespace ATM.Test.Integration
 
             string _flight1 = "TRK042;13000;13000;13000;20180403100622937";
             _mainreceiver.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { _flight1 }));
-            ITrack track1 = parseTracks.CreateFlight(_flight1);
 
             filter.Received().Filtering(Arg.Is<ITrack>(s => s.Tag.Equals("TRK042")));
 
