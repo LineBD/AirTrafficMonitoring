@@ -22,7 +22,7 @@ namespace ConsoleAppATM
             var myReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
             
 
-            var Display = new ControllerDisplay(myReceiver,filter,writer,compare,conflict,parseTracks);
+            var receiver = new MainReceiver(myReceiver,filter,writer,compare,conflict,parseTracks);
           
             Console.ReadKey();
            

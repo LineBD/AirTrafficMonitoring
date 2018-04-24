@@ -14,7 +14,7 @@ namespace ATM.Test.Integration
     {
         //Tester forbindelsen mellem controller display og trackparsing
 
-        private ControllerDisplay _controller;
+        private Receiver _maincontroller;
         private ITrackParsing parseTracks;
         private ITrack track;
         private IFilterFlightLimits filter;
@@ -32,7 +32,7 @@ namespace ATM.Test.Integration
             filter = Substitute.For<IFilterFlightLimits>();
             collision = Substitute.For<CheckCollision>();
             conflictingtracks = Substitute.For<IConflictingTracks>();
-            _controller = new ControllerDisplay(receiver, filter, write, collision, conflictingtracks, parseTracks);
+            _maincontroller = new Receiver(receiver, filter, write, collision, conflictingtracks, parseTracks);
 
         }
         //[TestCase(9999, 9999,false)]
