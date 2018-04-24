@@ -18,7 +18,7 @@ namespace ATM.Test.Integration
         private ITrackParsing parseTracks;
         private ITrack track;
         private IFilterFlightLimits filter;
-        private IConflictingTracks conflictingtracks;
+        private ICompareTracks comparetracks;
         private CheckCollision collision;
         private IWrite write;
         private ITransponderReceiver receiver;
@@ -32,10 +32,21 @@ namespace ATM.Test.Integration
             filter = new FilterFlightLimits();
             collision = Substitute.For<CheckCollision>();
             comparetracks = Substitute.For<ICompareTracks>();
-            _mainreceiver = new MainReceiver(receiver, filter, write, collision, conflictingtracks, parseTracks);
+            _mainreceiver = new MainReceiver(receiver, filter, write, collision, comparetracks, parseTracks);
+        }
 
         [Test]
-        public void CompareTracks_UpdateTracks
+        public void CompareTracks_UpdateTracks_Correct()
+        {
+            List<ITrack> list = new List<ITrack>();
+            string _flight = "TRK042;13000;130000;13000;20180403100622937";
+            _mainreceiver.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { _flight }));
+
+            ITrack track = parseTracks.CreateFlight(_flight);
+            filter.Filtering(track);
+            list.Add(track);
+            comparetracks.Received().UpdateTracks(list);
+        }
 
 
     }

@@ -31,8 +31,8 @@ namespace ATM.Test.Integration
             write = Substitute.For<WriteToConsole>();
             filter = Substitute.For<IFilterFlightLimits>();
             collision = Substitute.For<CheckCollision>();
-            conmparetracks = Substitute.For<ICompareTracks>();
-            _mainreceiver= new MainReceiver(receiver, filter, write, collision, conflictingtracks, parseTracks);
+            comparetracks = Substitute.For<ICompareTracks>();
+            _mainreceiver= new MainReceiver(receiver, filter, write, collision, comparetracks, parseTracks);
 
         }
        
