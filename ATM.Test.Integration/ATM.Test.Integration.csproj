@@ -55,13 +55,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IntegrationsTest5.cs" />
     <Compile Include="IntegrationTest_1.cs" />
     <Compile Include="IntegrationTest3.cs" />
-    <Compile Include="IntegrationTest44.cs" />
+    <Compile Include="IntegrationTest_4.cs" />
     <Compile Include="IntegrationTest6.cs" />
-    <Compile Include="IntegrationTest8.cs" />
-    <Compile Include="IntegrationTest9.cs" />
     <Compile Include="IntegrationTest_2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

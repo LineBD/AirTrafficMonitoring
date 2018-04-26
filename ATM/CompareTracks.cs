@@ -72,12 +72,8 @@ namespace ATM
                 }
 
             }
-            
-            //Konflikthåndtering (Kun for currenttracks)
 
-            // udskrivning
             _write.Write(currentTracks);
-                       //Udskriv!
         }
        
 

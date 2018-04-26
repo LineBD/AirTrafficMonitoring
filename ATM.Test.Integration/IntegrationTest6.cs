@@ -40,26 +40,8 @@ namespace ATM.Test.Integration
         }
 
         [Test]
-        public void nu_nu_nu()
+        public void CheckCollision_CollidingStringsFromMainReciver_AlarmCalled()
         {
-            //DateTime dateTime1 = new DateTime(2018, 06, 10, 10, 18, 18);
-            //DateTime dateTime2 = new DateTime(2018, 06, 10, 10, 18, 20);
-
-            //Track _flight2 = new Track
-            //{
-            //    Tag = "HEJMEDDIG",
-            //    XCoordinate = 12000,
-            //    YCoordinate = 12001,
-            //    Altitude = 19987,
-            //    Timestamp = dateTime1
-
-            //};
-
-            //List<ITrack> _newTracks = new List<ITrack>
-            //{
-            //    _flight2
-            //};
-
 
             List<ITrack> list = new List<ITrack>();
             string _flight1 = "TRK042;13000;13000;13000;20180403100622937";
@@ -73,8 +55,6 @@ namespace ATM.Test.Integration
 
             _collision.TrackComparison(list);
             _alarm.Received().Write(list);
-            //_comparetracks.UpdateTracks(_newTracks);
-            //_writeToConsole.Received().Write(_newTracks);
         }
     }
 }

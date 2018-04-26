@@ -40,16 +40,13 @@ namespace ATM.Test.Integration
         {
             List<ITrack> list = new List<ITrack>();
             string _flight1 = "TRK042;13000;13000;13000;20180403100622937";
-            string _flight2 = "TTG065;13001;13001;13001;20180403100622937";
             _mainreceiver.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { _flight1 }));
-            _mainreceiver.MyReceiver_TransponderDataReady(this, new RawTransponderDataEventArgs(new List<string> { _flight2 }));
             ITrack track1 = parseTracks.CreateFlight(_flight1);
-            ITrack track2 = parseTracks.CreateFlight(_flight2);
             list.Add(track1);
-            list.Add(track2);
 
-            comparetracks.UpdateTracks(list);
-            write.Received().Write(list);
+            filter.Filtering(track1);
+            comparetracks.Received().UpdateTracks(Arg.Is<List<ITrack>>(tra => tra[0].Tag.Equals("TRK042")));
+
         }
 
 
